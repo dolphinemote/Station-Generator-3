@@ -116,9 +116,9 @@ public class Map_To_DMM {
 
         System.out.println("Filename: "+FileName);
         //"D:\\A - Github\\MAPS\\"+FileName+".dmm"
-        Path path = Path.of("D:"+FileName+".dmm");
+        Path path = Path.of("D:\\"+FileName+".dmm");
         TopRightLogPanel.add_a_message("Saving file: "+FileName+" (Location: Disk D://)");
-
+        System.out.println(path);
         try
         {
             Files.createFile(path);
