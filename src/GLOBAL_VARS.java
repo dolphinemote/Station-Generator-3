@@ -29,8 +29,8 @@ public class GLOBAL_VARS
     public static boolean item_offset_allowed = true;
 
     public static boolean infinite_cells_for_area_computers = true;
-
-
+    public static boolean alt_generation_pools_nova_skyrat_bubber_only = false;
+    public static boolean auto_rotation_of_airlocks = true;
 
     GLOBAL_VARS()
     {

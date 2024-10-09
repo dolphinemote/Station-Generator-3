@@ -17,6 +17,9 @@ public class MAP_STYLE_INIT {
     static String lattice_insead_of_window = "/turf/open/space/basic, /obj/structure/lattice,";
     static String grille_instead_of_window = "/turf/open/floor/plating, /obj/structure/grille,";
 
+    //
+
+
 
     static String[] engineering_MixedCorporations_floor_pool = new String[]{
             "/turf/open/floor/mineral/titanium/yellow,",
@@ -62,6 +65,13 @@ public class MAP_STYLE_INIT {
                     "/obj/item/flashlight/lamp",
             };
 
+    static String[] medical_CIN_floor_pool = new String[]
+            {
+                    "/turf/open/floor/iron/white/small,/obj/effect/turf_decal/tile/dark_blue/opposingcorners,",
+                    "/turf/open/floor/iron/showroomfloor,/obj/effect/turf_decal/tile/dark_blue/opposingcorners,",
+                    "/turf/open/floor/iron/white/small,"
+            };
+
     static String[] medbay_loot_pool = new String[]
             {
                     "/obj/item/storage/medkit/regular",
@@ -72,6 +82,7 @@ public class MAP_STYLE_INIT {
                     "/obj/item/storage/medkit/o2",
                     "/obj/item/storage/medkit/regular",
                     "/obj/item/storage/medkit/advanced",
+                    //
                     "/obj/item/stack/medical/suture",
                     "/obj/item/stack/medical/mesh",
                     "/obj/item/stack/medical/gauze/twelve",
@@ -211,11 +222,12 @@ public class MAP_STYLE_INIT {
     };
 
     static String[] armoury_SYNDICATE_loot_pool = new String[]{
-
-            "/obj/item/melee/baton",
+            //
+            "/obj/item/melee/baton/telescopic",
             "/obj/item/gun/energy/disabler",
-
+            //
             "/obj/item/gun/ballistic/shotgun/bulldog/unrestricted",
+            "/obj/item/gun/ballistic/automatic/smartgun",
             "/obj/item/gun/ballistic/automatic/pistol/clandestine",
             "/obj/item/gun/ballistic/rocketlauncher/unrestricted",
             "/obj/item/storage/backpack/duffelbag/syndie/c4",
@@ -275,6 +287,9 @@ public class MAP_STYLE_INIT {
             "/obj/item/gun/energy/disabler",
             "/obj/item/gun/energy/e_gun",
             "/obj/item/melee/baton/telescopic",
+            //
+            "/obj/item/gun/ballistic/automatic/xhihao_smg",
+            "/obj/item/gun/ballistic/rifle/boltaction/prime",
     };
 
     static Area basic_MixedCorporations = new Area(
@@ -559,12 +574,7 @@ public class MAP_STYLE_INIT {
                     "/obj/machinery/door/airlock/survival_pod/glass,/obj/effect/mapping_helpers/airlock/autoname,",
                     pod_window_spawner,
                     spaceship_hull_wall_path,
-                    new String[]
-                            {
-                                    "/turf/open/floor/iron/white/small,/obj/effect/turf_decal/tile/dark_blue/opposingcorners,",
-                                    "/turf/open/floor/iron/white,/obj/effect/turf_decal/tile/dark_blue/opposingcorners,",
-                                    "/turf/open/floor/iron/white/small,"
-                            },
+                    medical_CIN_floor_pool,
                     basic_Mixed_Corporations_crate_pool,
                     medbay_loot_pool,
                     medical_CIN_object_pool,
@@ -613,7 +623,6 @@ public class MAP_STYLE_INIT {
             GLOBAL_VARS.list_of_styles[3].list_of_areas.add(engineering_SpaceRuin);
             GLOBAL_VARS.list_of_styles[3].list_of_areas.add(security_SpaceRuin);
             GLOBAL_VARS.list_of_styles[3].list_of_areas.add(bridge_SpaceRuin);
-
             //MixedCorps(Nova/Skyrat)
             GLOBAL_VARS.list_of_styles[4].list_of_areas.add(generic_MixedCorps);
             GLOBAL_VARS.list_of_styles[4].list_of_areas.add(medical_MixedCorps);

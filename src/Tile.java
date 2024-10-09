@@ -21,21 +21,24 @@ public class Tile
     int random_x_offset;
     int random_y_offset;
 
-            ArrayList<String> items = new ArrayList<>(10);
+    ArrayList<String> items = new ArrayList<>();
 
     String getStringOfAllCombinedItems(){
         StringBuilder ReturnString = new StringBuilder();
         for (String item : items) {
             ReturnString.append(item);
+
             random_x_offset = 0;
             random_y_offset = 0;
             if(GLOBAL_VARS.item_offset_allowed)
             {
                 random_x_offset = random.nextInt(17)-8;
                 random_y_offset = random.nextInt(9);
+                //example: {pixel_y = 10; pixel_x = -6}
+                ReturnString.append("{pixel_y = ").append(random_y_offset).append("; pixel_x = ").append(random_x_offset).append("}");
             }
-            //{pixel_y = 10; pixel_x = -6}
-            ReturnString.append("{pixel_y = ").append(random_y_offset).append("; pixel_x = ").append(random_x_offset).append("},");
+
+            ReturnString.append(",");
         }
         return ReturnString.toString();
     }

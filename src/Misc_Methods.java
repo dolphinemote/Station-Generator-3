@@ -66,64 +66,35 @@ public class Misc_Methods
         return return_color;
     }
 
+
+    String get_random_light_path(String direction)//lowercase direction without "," - north, south
+    {
+        String return_string = "";
+        switch (random.nextInt(5))
+        {
+            case 0 -> return_string ="/obj/machinery/light/directional/"+direction+",";
+            case 1 -> return_string="/obj/machinery/light/cold/directional/"+direction+",";
+            case 2 -> return_string="/obj/machinery/light/warm/directional/"+direction+",";
+            case 3 -> return_string="/obj/machinery/light/small/directional/"+direction+",";
+            case 4 -> return_string=""; //20% chance to not place a light
+        }
+        return return_string;
+    }
+
     static void place_wall_lights()
     {
-        for(int i = 0;i<Game_Map.size_of_the_map;i+=4)
+        //horizontal
+        for (int y = 0; y < Game_Map.size_of_the_map; y++)
         {
-            for(int j = 0;j<Game_Map.size_of_the_map;j+=4)
+            for (int x = 0; x < Game_Map.size_of_the_map; x++)
             {
-                if(Game_Map.array[i][j].marker == Markers.FLOOR)
+                if(Game_Map.array[x][y].marker == Markers.FLOOR)
                 {
-                    //north
-                    if(Game_Map.array[i][j-1].marker==Markers.WALL)
-                    {
-                        switch (random.nextInt(5))
-                        {
-                            case 0 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/directional/north,";
-                            case 1 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/cold/directional/north,";
-                            case 2 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/warm/directional/north,";
-                            case 3 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/small/directional/north,";
-                            case 4 -> Game_Map.array[i][j].north_wall_mount="";
-                        }
-
-                    }
-                    //east
-                    else if(Game_Map.array[i+1][j].marker==Markers.WALL)
-                    {
-                        switch (random.nextInt(5))
-                        {
-                            case 0 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/directional/east,";
-                            case 1 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/cold/directional/east,";
-                            case 2 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/warm/directional/east,";
-                            case 3 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/small/directional/east,";
-                            case 4 -> Game_Map.array[i][j].north_wall_mount="";
-                        }
-                    }
-                    else if(Game_Map.array[i][j+1].marker==Markers.WALL)
-                    {
-                        switch (random.nextInt(5))
-                        {
-                            case 0 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/directional/south,";
-                            case 1 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/cold/directional/south,";
-                            case 2 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/warm/directional/south,";
-                            case 3 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/small/directional/south,";
-                            case 4 -> Game_Map.array[i][j].north_wall_mount="";
-                        }
-                    }
-                    else if(Game_Map.array[i-1][j].marker==Markers.WALL)
-                    {
-                        switch (random.nextInt(5))
-                        {
-                            case 0 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/directional/west,";
-                            case 1 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/cold/directional/west,";
-                            case 2 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/warm/directional/west,";
-                            case 3 -> Game_Map.array[i][j].north_wall_mount="/obj/machinery/light/small/directional/west,";
-                            case 4 -> Game_Map.array[i][j].north_wall_mount="";
-                        }
-                    }
+                    
                 }
             }
         }
+        //vertical
     }
 
     static void really_stupid_observer_start_placement()//i am so lazy
