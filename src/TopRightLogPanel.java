@@ -11,7 +11,7 @@ public class TopRightLogPanel extends JPanel
     //0-999
     public static String[] text_array = new String[1000];
 
-    String get_X_NonemptyMessageFromTheEnd(int search_index)//0-10
+    String get_X_NonEmptyMessageFromTheEnd(int search_index)//0-10
     {
         String displayed_message = "";
         for (int i = 10; i < text_array.length; i++)
@@ -53,9 +53,9 @@ public class TopRightLogPanel extends JPanel
     {
         text_array[0] = "Start";
         setBackground(GLOBAL_VARS.main_background_color);
-        x = screen_width / 3 * 2;
+        x = screen_height;
         y = 0;
-        width = x / 2;
+        width = screen_width-screen_height;
         height = screen_height / 3;
         this.setBounds(x, y, width, height);
     }
@@ -74,10 +74,10 @@ public class TopRightLogPanel extends JPanel
             g.drawString(i + "",width / 40,height / 10 * i + height / 10 / 3 * 2);
 
             //g.setColor(Misc_Methods.misc_get_random_color());
-            g.drawString("          "+get_X_NonemptyMessageFromTheEnd(i),
+            g.drawString("          "+get_X_NonEmptyMessageFromTheEnd(i),
                     width / 40,height/10 * i + height / 10 / 3 * 2);
         }
         g.setColor(Color.GRAY);
-        g.drawRect(0, 0, width, height);
+        g.drawRect(0, 0, width-1, height);
     }
 }

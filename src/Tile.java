@@ -10,6 +10,8 @@ public class Tile
     int number = 0;
     Area area;
 
+    int random_object_icon_type; //this sucks
+
     String turf="";
     String object="";
 

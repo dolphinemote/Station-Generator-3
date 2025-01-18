@@ -8,7 +8,7 @@ public class Escape_Menu extends JPanel
     int y;
     int width;
     int height;
-    int chosen_button = 0;
+    int selected_button = 0;
 
     Escape_Menu(int screen_width, int screen_height)
     {
@@ -22,7 +22,7 @@ public class Escape_Menu extends JPanel
     }
     void menu_called()
     {
-        this.chosen_button=0;
+        this.selected_button =0;
 
         //if visible makes un-visible and vice versa
         this.setVisible(!isVisible());
@@ -36,15 +36,15 @@ public class Escape_Menu extends JPanel
 
     static void key_left_or_right_pressed()
     {
-        if (GraphicsMain.escape_menu.chosen_button == 0)
-        {GraphicsMain.escape_menu.chosen_button = 1;}
-        else {GraphicsMain.escape_menu.chosen_button = 0;}
+        if (GraphicsMain.escape_menu.selected_button == 0)
+        {GraphicsMain.escape_menu.selected_button = 1;}
+        else {GraphicsMain.escape_menu.selected_button = 0;}
     }
 
 
     void key_Enter_or_Space_pressed()
     {
-        if(chosen_button==1)
+        if(selected_button == 1)
         {System.exit(0);}
         else{this.menu_called();}
     }
@@ -55,12 +55,15 @@ public class Escape_Menu extends JPanel
     {
         super.paintComponent(g);
 
+        g.setColor(GLOBAL_VARS.main_background_color);
+        g.fillRect(0,0,width,height);
+
         g.setColor(GLOBAL_VARS.highlight_color);
-        g.drawRect(0,0,width,height);
+        g.drawRect(0,0,width-1,height-1);
 
         g.drawString("EXIT",width/20,height/10);
 
-        if(chosen_button==0){
+        if(selected_button == 0){
             g.setColor(GLOBAL_VARS.highlight_color);
             g.fillRect(0,height/2,width/2,height/2);
             g.drawString("Yes", width/4*3, height/4*3);

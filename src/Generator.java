@@ -22,7 +22,7 @@ public class Generator
         }
     }
 
-    static void place_rectangles()        //rectangles that form the rooms
+    static void place_rectangles()//rectangles that form the rooms
     {
         int rectangles_left_to_place = GLOBAL_VARS.amount_of_rectangles;
         while (rectangles_left_to_place > 0)
@@ -87,13 +87,12 @@ public class Generator
 
         //
         OBJECT_MARKER_PLACER.place_all_object_markers();
-        //TopRightLogPanel.add_a_message("--------------------------");
 
         //
         number_of_stations_generated++;
         TopRightLogPanel.add_a_message("Generation number " + number_of_stations_generated);
         TopRightLogPanel.add_a_message("Map Size: " + GLOBAL_VARS.map_size);
-        TopRightLogPanel.add_a_message("Number of Rooms: " + AREA_NUMBER_ASSIGNING.amount_of_rooms);
+        TopRightLogPanel.add_a_message("---");
 
         //
         AREA_NUMBER_ASSIGNING.display_area_statistics();

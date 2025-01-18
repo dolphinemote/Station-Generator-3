@@ -21,7 +21,9 @@ public class GraphicsMain extends JFrame
     GraphicsMain()
     {
         System.out.println("Graphics_Main");
+
         this.setLayout(null);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         KeyAdapter keyAdapter = new KeyAdapter()
         {

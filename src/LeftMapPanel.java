@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class LeftMapPanel extends JPanel {
-    private int x;
-    private int y;
-    private int width;
-    private int height;
+
+    int tileSideLength;
+    int panelSideLength;
 
     private static int scale;
     private static int leftBorder = 0;
@@ -13,30 +13,74 @@ public class LeftMapPanel extends JPanel {
 
     private boolean isPanelActive = false;
 
+
+    Random random = new Random();
+
     //
     int last_drawn_area_number;
     //
+    Image tileIcon = Toolkit.getDefaultToolkit().getImage("scuffedTileIcon.png");
 
-    public LeftMapPanel(int screenHeight){
-        scale = Game_Map.size_of_the_map;
+    Image window = Toolkit.getDefaultToolkit().getImage("scuffedWindowIcon.png");
+    Image airlock = Toolkit.getDefaultToolkit().getImage("scuffedAirlockIcon.png");
+    Image wall = Toolkit.getDefaultToolkit().getImage("scuffedWallIcon.png");
+
+    Image crate = Toolkit.getDefaultToolkit().getImage("scuffedYellowLockerIcon.png");
+    Image locker = Toolkit.getDefaultToolkit().getImage("scuffedYellowTableIcon.png");
+    Image table = Toolkit.getDefaultToolkit().getImage("scuffedYellowCrateIcon.png");
+
+    Image chairDown = Toolkit.getDefaultToolkit().getImage("scuffedDownChairIcon.png");
+    Image chairUp = Toolkit.getDefaultToolkit().getImage("scuffedUpChairIcon.png");
+    Image chairLeft = Toolkit.getDefaultToolkit().getImage("scuffedLeftChairIcon.png");
+    Image chairRight = Toolkit.getDefaultToolkit().getImage("scuffedRightChairIcon.png");
+
+    Image scrubber = Toolkit.getDefaultToolkit().getImage("scuffedScrubberIcon.png");
+    Image vent = Toolkit.getDefaultToolkit().getImage("scuffedVentIcon.png");
+    Image pipes = Toolkit.getDefaultToolkit().getImage("scuffedPipesIcon.png");
+
+    Image otherObject = Toolkit.getDefaultToolkit().getImage("scuffedObjectIcon.png");
+
+    Image lattice = Toolkit.getDefaultToolkit().getImage("scuffedLatticeIcon.png");
+    Image grille = Toolkit.getDefaultToolkit().getImage("scuffedGrilleIcon.png");
+    Image plating = Toolkit.getDefaultToolkit().getImage("scuffedPlatingIcon.png");
+
+    Image decal = Toolkit.getDefaultToolkit().getImage("decalIcon.png");
+
+    Image catwalk = Toolkit.getDefaultToolkit().getImage("catwalkIcon.png");
+    Image rock = Toolkit.getDefaultToolkit().getImage("rockIcon.png");
+    Image effect = Toolkit.getDefaultToolkit().getImage("effectIcon.png");
+
+    Image blueLocker = Toolkit.getDefaultToolkit().getImage("blueLockerIcon.png");
+    Image redLocker = Toolkit.getDefaultToolkit().getImage("redLockerIcon.png");
+    Image greyLocker = Toolkit.getDefaultToolkit().getImage("greyLockerIcon.png");
+
+
+
+
+    public void initialize(int panelSideLength){
+        scale = GLOBAL_VARS.map_size;
+        this.panelSideLength =  panelSideLength;
         System.out.println("Map_Panel");
         setBackground(GLOBAL_VARS.main_background_color);
-        x = 0;
-        y = 0;
-        width = screenHeight;
-        height = width;
-        this.setBounds(x, y, width, height);
+        int x = 0;
+        int y = 0;
+
+        this.setBounds(x, y, panelSideLength, panelSideLength);
+    }
+
+    LeftMapPanel(int screenHeight){
+        initialize(screenHeight);
     }
 
     public void changeScale(){
         leftBorder = 0;
         topBorder = 0;
-        if (scale == Game_Map.size_of_the_map) {
-            scale = 32;
-        } else if (scale == 32) {
+        if (scale == GLOBAL_VARS.map_size) {
             scale = 16;
         } else if (scale == 16) {
-            scale = Game_Map.size_of_the_map;
+            scale = 32;
+        } else if (scale == 32) {
+            scale = GLOBAL_VARS.map_size;
         }
     }
 
@@ -95,8 +139,7 @@ public class LeftMapPanel extends JPanel {
             g.setColor(getColorForAreaNumber(Game_Map.array[x + leftBorder][y + topBorder].number));
             if (Game_Map.array[x + leftBorder][y + topBorder].marker == Markers.FLOOR){
                 g.drawString("" + (Game_Map.array[x + leftBorder][y + topBorder].number),
-                        x * (height / scale), (y + 1) * (height / scale));
-
+                        x*tileSideLength, (y+1)*tileSideLength);
             }
         }
         if(Game_Map.array[x + leftBorder][y + topBorder].number>last_drawn_area_number){
@@ -116,48 +159,105 @@ public class LeftMapPanel extends JPanel {
         }
         if (isPanelActive) {
             g.setColor(GLOBAL_VARS.highlight_color);
-            g.drawRect(0, 0, height, height);
+            g.drawRect(0, 0, panelSideLength-1, panelSideLength-1);
         }
     }
 
     private void drawTile(Graphics g, int x, int y) {
+        tileSideLength = panelSideLength/scale;
         switch (Game_Map.array[x + leftBorder][y + topBorder].marker) {
             case CARPET -> {
                 g.setColor(Color.ORANGE);
-                g.fillRect(x * (height / scale), y * (height / scale), height / scale, height / scale);
+                g.fillRect(x*tileSideLength, y*tileSideLength, tileSideLength, tileSideLength);
             }
-            case SPACE -> {
-            }
+            case SPACE ->
+                    {
+                        //
+                    }
             case WALL -> {
-                g.setColor(Color.DARK_GRAY);
-                g.fillRect(x * (height / scale), y * (height / scale), height / scale, height / scale);
+                //g.setColor(Color.DARK_GRAY);
+                //g.fillRect(x*tileSideLength, y*tileSideLength, tileSideLength, tileSideLength);
+                g.drawImage(wall,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
             }
             case WINDOW -> {
-                g.setColor(Color.BLUE);
-                g.fillRect(x * (height / scale), y * (height / scale), height / scale, height / scale);
+                //g.setColor(Color.BLUE);
+                //g.fillRect(x* tileSideLength, y*tileSideLength, tileSideLength, tileSideLength);
+                g.drawImage(window,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
             }
             case AIRLOCK -> {
-                g.setColor(Color.DARK_GRAY);
-                g.fillRect(x * (height / scale), y * (height / scale), height / scale, height / scale);
-                g.setColor(Color.GREEN);
-                g.drawLine(x * (height / scale) + (height / scale / 2), y * (height / scale),
-                        x * (height / scale) + (height / scale / 2), (y + 1) * (height / scale));
+                g.drawImage(airlock,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
+                //g.setColor(Color.DARK_GRAY);
+                //g.fillRect(x*(tileSideLength), y*(tileSideLength), tileSideLength, tileSideLength);
+                //g.setColor(Color.GREEN);
+                //g.drawLine(x * tileSideLength + (tileSideLength / 2), y * tileSideLength, x * tileSideLength + (tileSideLength / 2), (y + 1) * tileSideLength);
             }
             case FLOOR -> {
-                g.setColor(Color.GRAY);
-                g.fillRect(x * (height / scale), y * (height / scale), height / scale, height / scale);
+                //g.setColor(Color.GRAY);
+                //g.fillRect(x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength);
+                g.drawImage(tileIcon,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
             }
             case SPACE_BORDER -> {
                 g.setColor(Color.BLUE);
-                g.drawLine(x * (height / scale), y * (height / scale), (x + 1) * (height / scale), (y + 1) * (height / scale));
-                g.drawLine((x + 1) * (height / scale), y * (height / scale), x * (height / scale), (y + 1) * (height / scale));
+                g.drawLine(x* tileSideLength, y* tileSideLength, (x+1)* tileSideLength, (y+1)* tileSideLength);
+                g.drawLine((x+1)* tileSideLength, y* tileSideLength, x* tileSideLength, (y+1)* tileSideLength);
             }
             case OBJECT -> {
-                g.setColor(Color.GRAY);
-                g.fillRect(x * (height / scale), y * (height / scale), height / scale, height / scale);
-                g.setColor(Color.RED);
-                g.drawLine(x * (height / scale), y * (height / scale), (x + 1) * (height / scale), (y + 1) * (height / scale));
-                g.drawLine((x + 1) * (height / scale), y * (height / scale), x * (height / scale), (y + 1) * (height / scale));
+                //g.setColor(Color.GRAY);
+                //g.fillRect(x* tileSideLength, y* tileSideLength, tileSideLength, tileSideLength);
+                //g.setColor(Color.RED);
+                //g.drawLine(x* tileSideLength, y* tileSideLength, (x+1)* tileSideLength, (y+1)* tileSideLength);
+                //g.drawLine((x+1)* tileSideLength, y* tileSideLength, x* tileSideLength, (y+1)* tileSideLength);
+
+                if(Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type == 0)
+                {
+                    Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type = random.nextInt(18)+1;
+                }
+
+                g.drawImage(tileIcon,x * tileSideLength,
+                        y * tileSideLength, tileSideLength, tileSideLength, this);
+
+                switch (Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type)
+                {
+
+                    case 1 -> g.drawImage(crate,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 2 -> g.drawImage(table,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 3 -> g.drawImage(chairUp,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 4 -> g.drawImage(chairDown,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 5 -> g.drawImage(scrubber,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 6 -> g.drawImage(vent,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 7 -> g.drawImage(pipes,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 8 -> g.drawImage(chairRight,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 9 -> g.drawImage(chairLeft,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 10 -> g.drawImage(otherObject,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 11 -> g.drawImage(locker,x * tileSideLength,
+                            y * tileSideLength, tileSideLength, tileSideLength, this);
+                    case 12 -> g.drawImage(lattice,x * tileSideLength, y * tileSideLength,
+                            tileSideLength, tileSideLength, this);
+                    case 13 -> g.drawImage(plating,x * tileSideLength, y * tileSideLength,
+                            tileSideLength, tileSideLength, this);
+                    case 14 -> g.drawImage(grille,x * tileSideLength, y * tileSideLength,
+                            tileSideLength, tileSideLength, this);
+                    case 15 -> g.drawImage(decal,x * tileSideLength, y * tileSideLength,
+                            tileSideLength, tileSideLength, this);
+                    case 16 -> g.drawImage(effect,x * tileSideLength, y * tileSideLength,
+                            tileSideLength, tileSideLength, this);
+                    case 17 -> g.drawImage(catwalk,x * tileSideLength, y * tileSideLength,
+                            tileSideLength, tileSideLength, this);
+                    case 18 -> g.drawImage(rock,x * tileSideLength, y * tileSideLength,
+                            tileSideLength, tileSideLength, this);
+
+                }
+                //g.drawImage(otherObject,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
             }
 //            case PIPES -> {
 //                g.setColor(Color.GRAY);

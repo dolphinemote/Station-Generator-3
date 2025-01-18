@@ -8,7 +8,7 @@ public class BottomRightMenuPanel extends JPanel {
     int width;
     int height;
 
-    public int current_active_menu_button = 0;
+    public int current_selected_menu_button = 0;
 
     String[] menuButtons;
 
@@ -22,23 +22,23 @@ public class BottomRightMenuPanel extends JPanel {
 
     void button_W_or_UP_pressed()
     {
-        if (GraphicsMain.bottomRightMenuPanel.current_active_menu_button > 0)
-        {GraphicsMain.bottomRightMenuPanel.current_active_menu_button--;}
-        else {GraphicsMain.bottomRightMenuPanel.current_active_menu_button = menuButtons.length-1;}
+        if (GraphicsMain.bottomRightMenuPanel.current_selected_menu_button > 0)
+        {GraphicsMain.bottomRightMenuPanel.current_selected_menu_button--;}
+        else {GraphicsMain.bottomRightMenuPanel.current_selected_menu_button = menuButtons.length-1;}
     }
     void button_S_or_DOWN_pressed()
     {
-        if (GraphicsMain.bottomRightMenuPanel.current_active_menu_button < menuButtons.length-1)
-        {GraphicsMain.bottomRightMenuPanel.current_active_menu_button++;}
-        else {GraphicsMain.bottomRightMenuPanel.current_active_menu_button = 0;}
+        if (GraphicsMain.bottomRightMenuPanel.current_selected_menu_button < menuButtons.length-1)
+        {GraphicsMain.bottomRightMenuPanel.current_selected_menu_button++;}
+        else {GraphicsMain.bottomRightMenuPanel.current_selected_menu_button = 0;}
     }
 
     void button_Enter_or_Space_pressed()
     {
-        switch (current_active_menu_button)
+        switch (current_selected_menu_button)
         {
             case 0 -> Generator.generate();
-            case 1 -> Map_To_DMM.simple_convert();
+            case 1 -> Array_To_DMM.simple_convert();
             case 2 -> GraphicsMain.settings_panel.menu_called();
             case 3 -> GraphicsMain.leftMapPanel.changeScale();
             case 4 -> GraphicsMain.leftMapPanel.togglePanel();
@@ -49,9 +49,9 @@ public class BottomRightMenuPanel extends JPanel {
     BottomRightMenuPanel(int screen_width, int screen_height)
     {
         setBackground(Color.BLACK);
-        x = screen_width / 3 * 2;
+        x = screen_height;
         y = screen_height/3;
-        width = x/2;
+        width = screen_width - screen_height;
         height = screen_height/3*2;
         this.setBounds(x, y, width, height);
 
@@ -69,14 +69,14 @@ public class BottomRightMenuPanel extends JPanel {
 
         //gray outline of the menu
         g.setColor(GLOBAL_VARS.main_text_color);
-        g.drawRect(0, 0, width, height);
+        g.drawRect(0, 0, width-1, height-1);
 
         for(y=0;y<6;y++)//menu buttons
         {
             {
                 g.setColor(GLOBAL_VARS.main_text_color);
 
-                if (y == current_active_menu_button)
+                if (y == current_selected_menu_button)
                 {g.setColor(GLOBAL_VARS.highlight_color);}
 
                 g.drawRect(width / 10, height / 7 * y + height/14, width / 10 * 8, height / 7-1);

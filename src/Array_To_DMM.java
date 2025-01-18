@@ -3,7 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Random;
 
-public class Map_To_DMM {
+public class Array_To_DMM {
 
     static Random random = new Random();
     //MARKER_HANDLER marker_handler = new MARKER_HANDLER();

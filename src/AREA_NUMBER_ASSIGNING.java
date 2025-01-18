@@ -30,10 +30,6 @@ public class AREA_NUMBER_ASSIGNING
     {
         Game_Map.array[x][y].number = amount_of_rooms;
 
-        //ArrayList list_of_tiles_to_convert = new ArrayList();
-        //list_of_tiles_to_convert.add(Game_Map.array[x][y]);
-
-
         //north tile check
         if (Game_Map.array[x][y - 1].number==0 && Game_Map.array[x][y - 1].marker == Markers.FLOOR)
         {we_found_an_unassigned_tile(x, y-1);}

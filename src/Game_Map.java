@@ -1,10 +1,9 @@
 public class Game_Map
 {
 
-    public static int size_of_the_map; //32 minimum
+    public static int size_of_the_map; //32 minimum, 256 - maximum
     public static Map_Style map_style;
     public static Tile[][] array;
-    public static int amount_of_object_markers = 99;
 
     public static void initialize()
     {

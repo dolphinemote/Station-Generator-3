@@ -3,6 +3,18 @@ import java.util.Random;
 public class OBJECT_MARKER_PLACER {
     static Random random = new Random();
 
+
+
+
+
+    void check_for_surroundings(int... ass)
+    {
+
+    }
+
+
+
+
     static void place_all_object_markers() {
         int amount_of_object_groups_we_should_place = GLOBAL_VARS.amount_of_object_markers;
 
@@ -13,7 +25,7 @@ public class OBJECT_MARKER_PLACER {
                     case 1 -> place_one_object_marker();
                     case 2 -> place_two_object_markers();
                     case 3 -> place_three_object_markers();
-                    //case 4 -> place_four_object_markers();
+                    case 4 -> place_four_object_markers();
                 }
                 amount_of_object_groups_we_should_place -= how_many_objects_in_one_group;
             }
@@ -21,6 +33,9 @@ public class OBJECT_MARKER_PLACER {
     }
 
     static void place_one_object_marker() {
+        //[-][-][-]
+        //[-]---[-]
+        //[-][-][-]
         while (true) {
             int random_x = random.nextInt(Game_Map.size_of_the_map - GLOBAL_VARS.space_border_length * 2) + GLOBAL_VARS.space_border_length;
             int random_y = random.nextInt(Game_Map.size_of_the_map - GLOBAL_VARS.space_border_length * 2) + GLOBAL_VARS.space_border_length;

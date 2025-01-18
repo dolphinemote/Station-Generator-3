@@ -43,7 +43,7 @@ public class Settings_Panel extends JPanel
     }
 
     public static Setting[] list_of_settings = new Setting[6];
-    Setting map_size = new Setting("Map Size", new int[]{32, 64, 96, 128, 256}, 2);
+    Setting map_size = new Setting("Map Size", new int[]{64, 80, 96, 128, 256}, 1);
     Setting amount_of_object_markers = new Setting("Amount of Object Markers", new int[]{0, 64, 128, 256}, 3);
     Setting amount_of_rectangles = new Setting("Amount of Rectangles", new int[]{64, 96, 128, 256}, 3);
     Setting border_length = new Setting("Border Length", new int[]{1, 8, 16}, 2);
@@ -51,7 +51,6 @@ public class Settings_Panel extends JPanel
 
     Settings_Panel(int screen_width, int screen_height)
     {
-
         chosen_button = 0;
         x = screen_width / 6;
         y = screen_height / 6;
@@ -104,7 +103,7 @@ public class Settings_Panel extends JPanel
         super.paintComponent(g);
 
         g.setColor(GLOBAL_VARS.highlight_color);
-        g.drawRect(0,0,width,height);
+        g.drawRect(0,0,width-1,height-1);
         {
             g.setColor(GLOBAL_VARS.highlight_color);
         }
@@ -132,7 +131,7 @@ public class Settings_Panel extends JPanel
         }
 
 
-        //GLOBAL_VARS.map_size = list_of_settings[0].options[list_of_settings[0].default_option_index];
+        GLOBAL_VARS.map_size = list_of_settings[0].options[list_of_settings[0].default_option_index];
         GLOBAL_VARS.amount_of_object_markers = list_of_settings[1].options[list_of_settings[1].default_option_index];
         GLOBAL_VARS.amount_of_rectangles = list_of_settings[2].options[list_of_settings[2].default_option_index];
         GLOBAL_VARS.space_border_length = list_of_settings[3].options[list_of_settings[3].default_option_index];

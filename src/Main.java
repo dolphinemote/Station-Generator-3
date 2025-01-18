@@ -6,7 +6,7 @@ public class Main
     public static Generator generator = new Generator();
     public static GraphicsMain graphics_main = new GraphicsMain();
     public static Keyboard_Handler keyboard_handler = new Keyboard_Handler();
-    public static Map_To_DMM map_to_dmm = new Map_To_DMM();
+    public static Array_To_DMM array_to_dmm = new Array_To_DMM();
 
     public static void main(String[] args)
     {
