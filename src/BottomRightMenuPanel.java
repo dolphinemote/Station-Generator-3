@@ -69,7 +69,7 @@ public class BottomRightMenuPanel extends JPanel {
 
         //gray outline of the menu
         g.setColor(GLOBAL_VARS.main_text_color);
-        g.drawRect(0, 0, width-1, height-1);
+        g.drawRect(1, 1, width-2, height-2);
 
         for(y=0;y<6;y++)//menu buttons
         {

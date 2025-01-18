@@ -7,6 +7,9 @@ public class LeftMapPanel extends JPanel {
     int tileSideLength;
     int panelSideLength;
 
+    int padding;
+
+
     private static int scale;
     private static int leftBorder = 0;
     private static int topBorder = 0;
@@ -76,10 +79,10 @@ public class LeftMapPanel extends JPanel {
         leftBorder = 0;
         topBorder = 0;
         if (scale == GLOBAL_VARS.map_size) {
-            scale = 16;
-        } else if (scale == 16) {
             scale = 32;
         } else if (scale == 32) {
+            scale = 16;
+        } else if (scale == 16) {
             scale = GLOBAL_VARS.map_size;
         }
     }
@@ -151,24 +154,36 @@ public class LeftMapPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         last_drawn_area_number = 0;
         super.paintComponent(g);
+
+        tileSideLength = panelSideLength / scale; // Начальный размер клеточки
+        //padding = (panelSideLength - (scale*tileSideLength));
+        //padding = 1;
+        //System.out.println("SCREEN HEIGHT = "+panelSideLength);
+        //System.out.println("scale*TILE SIDE LENGTH = "+scale*tileSideLength);
+        //System.out.println("TOTAL PADDING NEEDED = "+(panelSideLength-scale*tileSideLength));
+        //System.out.println(padding);
+        TopRightLogPanel.add_a_message("");
         for (int y = 0; y < scale; y++) {
             for (int x = 0; x < scale; x++) {
-                drawTile(g, x, y);
-                drawAreaNumber(g, x, y);
+                int posX = x * tileSideLength;
+                int posY = y * tileSideLength;
+                //System.out.println(posX+","+posY);
+                drawTile(g, x, y, posX, posY); // Передаем позицию и индексы
+                drawAreaNumber(g, x, y); // Передаем позицию и индексы
             }
         }
         if (isPanelActive) {
             g.setColor(GLOBAL_VARS.highlight_color);
-            g.drawRect(0, 0, panelSideLength-1, panelSideLength-1);
+            g.drawRect(1, 1, panelSideLength - 2, panelSideLength - 2);
         }
     }
 
-    private void drawTile(Graphics g, int x, int y) {
-        tileSideLength = panelSideLength/scale;
+    private void drawTile(Graphics g, int x, int y, int posX, int posY) {
+        tileSideLength = panelSideLength / scale;
         switch (Game_Map.array[x + leftBorder][y + topBorder].marker) {
             case CARPET -> {
                 g.setColor(Color.ORANGE);
-                g.fillRect(x*tileSideLength, y*tileSideLength, tileSideLength, tileSideLength);
+                g.fillRect(posX, posY, tileSideLength, tileSideLength);
             }
             case SPACE ->
                     {
@@ -177,15 +192,15 @@ public class LeftMapPanel extends JPanel {
             case WALL -> {
                 //g.setColor(Color.DARK_GRAY);
                 //g.fillRect(x*tileSideLength, y*tileSideLength, tileSideLength, tileSideLength);
-                g.drawImage(wall,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
+                g.drawImage(wall,posX, posY, tileSideLength, tileSideLength, this);
             }
             case WINDOW -> {
                 //g.setColor(Color.BLUE);
                 //g.fillRect(x* tileSideLength, y*tileSideLength, tileSideLength, tileSideLength);
-                g.drawImage(window,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
+                g.drawImage(window,posX, posY , tileSideLength, tileSideLength, this);
             }
             case AIRLOCK -> {
-                g.drawImage(airlock,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
+                g.drawImage(airlock,posX, posY, tileSideLength, tileSideLength, this);
                 //g.setColor(Color.DARK_GRAY);
                 //g.fillRect(x*(tileSideLength), y*(tileSideLength), tileSideLength, tileSideLength);
                 //g.setColor(Color.GREEN);
@@ -194,12 +209,12 @@ public class LeftMapPanel extends JPanel {
             case FLOOR -> {
                 //g.setColor(Color.GRAY);
                 //g.fillRect(x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength);
-                g.drawImage(tileIcon,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
+                g.drawImage(tileIcon, posX, posY, tileSideLength, tileSideLength, this);
             }
             case SPACE_BORDER -> {
                 g.setColor(Color.BLUE);
-                g.drawLine(x* tileSideLength, y* tileSideLength, (x+1)* tileSideLength, (y+1)* tileSideLength);
-                g.drawLine((x+1)* tileSideLength, y* tileSideLength, x* tileSideLength, (y+1)* tileSideLength);
+                g.drawLine(posX, posY, posX + tileSideLength, posY + tileSideLength);
+                g.drawLine(posX, posY + tileSideLength, posX + tileSideLength, posY);
             }
             case OBJECT -> {
                 //g.setColor(Color.GRAY);
@@ -213,48 +228,30 @@ public class LeftMapPanel extends JPanel {
                     Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type = random.nextInt(18)+1;
                 }
 
-                g.drawImage(tileIcon,x * tileSideLength,
-                        y * tileSideLength, tileSideLength, tileSideLength, this);
+                g.drawImage(tileIcon, posX, posY, tileSideLength, tileSideLength, this);
+                //g.drawImage(otherObject, posX, posY, tileSideLength, tileSideLength, this);
 
                 switch (Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type)
                 {
 
-                    case 1 -> g.drawImage(crate,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 2 -> g.drawImage(table,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 3 -> g.drawImage(chairUp,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 4 -> g.drawImage(chairDown,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 5 -> g.drawImage(scrubber,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 6 -> g.drawImage(vent,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 7 -> g.drawImage(pipes,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 8 -> g.drawImage(chairRight,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 9 -> g.drawImage(chairLeft,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 10 -> g.drawImage(otherObject,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 11 -> g.drawImage(locker,x * tileSideLength,
-                            y * tileSideLength, tileSideLength, tileSideLength, this);
-                    case 12 -> g.drawImage(lattice,x * tileSideLength, y * tileSideLength,
-                            tileSideLength, tileSideLength, this);
-                    case 13 -> g.drawImage(plating,x * tileSideLength, y * tileSideLength,
-                            tileSideLength, tileSideLength, this);
-                    case 14 -> g.drawImage(grille,x * tileSideLength, y * tileSideLength,
-                            tileSideLength, tileSideLength, this);
-                    case 15 -> g.drawImage(decal,x * tileSideLength, y * tileSideLength,
-                            tileSideLength, tileSideLength, this);
-                    case 16 -> g.drawImage(effect,x * tileSideLength, y * tileSideLength,
-                            tileSideLength, tileSideLength, this);
-                    case 17 -> g.drawImage(catwalk,x * tileSideLength, y * tileSideLength,
-                            tileSideLength, tileSideLength, this);
-                    case 18 -> g.drawImage(rock,x * tileSideLength, y * tileSideLength,
-                            tileSideLength, tileSideLength, this);
+                    case 1 -> g.drawImage(crate,posX, posY, tileSideLength, tileSideLength, this);
+                    case 2 -> g.drawImage(table,posX, posY, tileSideLength, tileSideLength, this);
+                    case 3 -> g.drawImage(chairUp,posX , posY, tileSideLength, tileSideLength, this);
+                    case 4 -> g.drawImage(chairDown,posX , posY, tileSideLength, tileSideLength, this);
+                    case 5 -> g.drawImage(scrubber,posX, posY, tileSideLength, tileSideLength, this);
+                    case 6 -> g.drawImage(vent,posX, posY, tileSideLength, tileSideLength, this);
+                    case 7 -> g.drawImage(pipes,posX, posY, tileSideLength, tileSideLength, this);
+                    case 8 -> g.drawImage(chairRight,posX , posY, tileSideLength, tileSideLength, this);
+                    case 9 -> g.drawImage(chairLeft,posX, posY, tileSideLength, tileSideLength, this);
+                    case 10 -> g.drawImage(otherObject,posX, posY, tileSideLength, tileSideLength, this);
+                    case 11 -> g.drawImage(locker,posX, posY, tileSideLength, tileSideLength, this);
+                    case 12 -> g.drawImage(lattice,posX , posY, tileSideLength, tileSideLength, this);
+                    case 13 -> g.drawImage(plating,posX, posY, tileSideLength, tileSideLength, this);
+                    case 14 -> g.drawImage(grille,posX, posY, tileSideLength, tileSideLength, this);
+                    case 15 -> g.drawImage(decal,posX, posY, tileSideLength, tileSideLength, this);
+                    case 16 -> g.drawImage(effect,posX, posY, tileSideLength, tileSideLength, this);
+                    case 17 -> g.drawImage(catwalk,posX, posY, tileSideLength, tileSideLength, this);
+                    case 18 -> g.drawImage(rock,posX, posY, tileSideLength, tileSideLength, this);
 
                 }
                 //g.drawImage(otherObject,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);

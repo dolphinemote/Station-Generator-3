@@ -19,7 +19,7 @@ public class OBJECT_MARKER_PLACER {
         int amount_of_object_groups_we_should_place = GLOBAL_VARS.amount_of_object_markers;
 
         while (amount_of_object_groups_we_should_place > 0) {
-            int how_many_objects_in_one_group = random.nextInt(3) + 1;
+            int how_many_objects_in_one_group = random.nextInt(4) + 1;
             if (amount_of_object_groups_we_should_place >= how_many_objects_in_one_group) {
                 switch (how_many_objects_in_one_group) {
                     case 1 -> place_one_object_marker();

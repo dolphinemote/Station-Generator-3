@@ -78,6 +78,6 @@ public class TopRightLogPanel extends JPanel
                     width / 40,height/10 * i + height / 10 / 3 * 2);
         }
         g.setColor(Color.GRAY);
-        g.drawRect(0, 0, width-1, height);
+        g.drawRect(1, 1, width-2, height-2);
     }
 }
