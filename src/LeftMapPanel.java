@@ -162,7 +162,6 @@ public class LeftMapPanel extends JPanel {
         //System.out.println("scale*TILE SIDE LENGTH = "+scale*tileSideLength);
         //System.out.println("TOTAL PADDING NEEDED = "+(panelSideLength-scale*tileSideLength));
         //System.out.println(padding);
-        TopRightLogPanel.add_a_message("");
         for (int y = 0; y < scale; y++) {
             for (int x = 0; x < scale; x++) {
                 int posX = x * tileSideLength;
@@ -181,95 +180,50 @@ public class LeftMapPanel extends JPanel {
     private void drawTile(Graphics g, int x, int y, int posX, int posY) {
         tileSideLength = panelSideLength / scale;
         switch (Game_Map.array[x + leftBorder][y + topBorder].marker) {
-            case CARPET -> {
-                g.setColor(Color.ORANGE);
-                g.fillRect(posX, posY, tileSideLength, tileSideLength);
-            }
-            case SPACE ->
-                    {
-                        //
-                    }
-            case WALL -> {
-                //g.setColor(Color.DARK_GRAY);
-                //g.fillRect(x*tileSideLength, y*tileSideLength, tileSideLength, tileSideLength);
-                g.drawImage(wall,posX, posY, tileSideLength, tileSideLength, this);
-            }
-            case WINDOW -> {
-                //g.setColor(Color.BLUE);
-                //g.fillRect(x* tileSideLength, y*tileSideLength, tileSideLength, tileSideLength);
-                g.drawImage(window,posX, posY , tileSideLength, tileSideLength, this);
-            }
-            case AIRLOCK -> {
-                g.drawImage(airlock,posX, posY, tileSideLength, tileSideLength, this);
-                //g.setColor(Color.DARK_GRAY);
-                //g.fillRect(x*(tileSideLength), y*(tileSideLength), tileSideLength, tileSideLength);
-                //g.setColor(Color.GREEN);
-                //g.drawLine(x * tileSideLength + (tileSideLength / 2), y * tileSideLength, x * tileSideLength + (tileSideLength / 2), (y + 1) * tileSideLength);
-            }
-            case FLOOR -> {
-                //g.setColor(Color.GRAY);
-                //g.fillRect(x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength);
-                g.drawImage(tileIcon, posX, posY, tileSideLength, tileSideLength, this);
-            }
+            case SPACE -> { }
+            case WALL -> g.drawImage(wall,posX, posY, tileSideLength, tileSideLength, this);
+            case WINDOW -> g.drawImage(window,posX, posY , tileSideLength, tileSideLength, this);
+            case AIRLOCK -> g.drawImage(airlock,posX, posY, tileSideLength, tileSideLength, this);
+            case FLOOR -> g.drawImage(tileIcon, posX, posY, tileSideLength, tileSideLength, this);
+            case LATTICE -> g.drawImage(lattice, posX, posY, tileSideLength, tileSideLength, this);
+            case GRILLE -> g.drawImage(grille, posX, posY, tileSideLength, tileSideLength, this);
+            case CATWALK -> g.drawImage(catwalk, posX, posY, tileSideLength, tileSideLength, this);
             case SPACE_BORDER -> {
                 g.setColor(Color.BLUE);
                 g.drawLine(posX, posY, posX + tileSideLength, posY + tileSideLength);
                 g.drawLine(posX, posY + tileSideLength, posX + tileSideLength, posY);
             }
             case OBJECT -> {
-                //g.setColor(Color.GRAY);
-                //g.fillRect(x* tileSideLength, y* tileSideLength, tileSideLength, tileSideLength);
-                //g.setColor(Color.RED);
-                //g.drawLine(x* tileSideLength, y* tileSideLength, (x+1)* tileSideLength, (y+1)* tileSideLength);
-                //g.drawLine((x+1)* tileSideLength, y* tileSideLength, x* tileSideLength, (y+1)* tileSideLength);
-
                 if(Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type == 0)
                 {
-                    Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type = random.nextInt(18)+1;
+                    Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type = random.nextInt(15)+1;
                 }
-
                 g.drawImage(tileIcon, posX, posY, tileSideLength, tileSideLength, this);
                 //g.drawImage(otherObject, posX, posY, tileSideLength, tileSideLength, this);
-
                 switch (Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type)
                 {
-
                     case 1 -> g.drawImage(crate,posX, posY, tileSideLength, tileSideLength, this);
                     case 2 -> g.drawImage(table,posX, posY, tileSideLength, tileSideLength, this);
                     case 3 -> g.drawImage(chairUp,posX , posY, tileSideLength, tileSideLength, this);
                     case 4 -> g.drawImage(chairDown,posX , posY, tileSideLength, tileSideLength, this);
                     case 5 -> g.drawImage(scrubber,posX, posY, tileSideLength, tileSideLength, this);
                     case 6 -> g.drawImage(vent,posX, posY, tileSideLength, tileSideLength, this);
-                    case 7 -> g.drawImage(pipes,posX, posY, tileSideLength, tileSideLength, this);
+                    //case 7 -> g.drawImage(pipes,posX, posY, tileSideLength, tileSideLength, this);
                     case 8 -> g.drawImage(chairRight,posX , posY, tileSideLength, tileSideLength, this);
                     case 9 -> g.drawImage(chairLeft,posX, posY, tileSideLength, tileSideLength, this);
                     case 10 -> g.drawImage(otherObject,posX, posY, tileSideLength, tileSideLength, this);
                     case 11 -> g.drawImage(locker,posX, posY, tileSideLength, tileSideLength, this);
-                    case 12 -> g.drawImage(lattice,posX , posY, tileSideLength, tileSideLength, this);
-                    case 13 -> g.drawImage(plating,posX, posY, tileSideLength, tileSideLength, this);
-                    case 14 -> g.drawImage(grille,posX, posY, tileSideLength, tileSideLength, this);
-                    case 15 -> g.drawImage(decal,posX, posY, tileSideLength, tileSideLength, this);
-                    case 16 -> g.drawImage(effect,posX, posY, tileSideLength, tileSideLength, this);
-                    case 17 -> g.drawImage(catwalk,posX, posY, tileSideLength, tileSideLength, this);
-                    case 18 -> g.drawImage(rock,posX, posY, tileSideLength, tileSideLength, this);
-
+                    //case 12 -> g.drawImage(lattice,posX , posY, tileSideLength, tileSideLength, this);
+                    case 12 -> g.drawImage(plating,posX, posY, tileSideLength, tileSideLength, this);
+                    //case 14 -> g.drawImage(grille,posX, posY, tileSideLength, tileSideLength, this);
+                    case 13 -> g.drawImage(decal,posX, posY, tileSideLength, tileSideLength, this);
+                    case 14 -> g.drawImage(effect,posX, posY, tileSideLength, tileSideLength, this);
+                    //case 17 -> g.drawImage(catwalk,posX, posY, tileSideLength, tileSideLength, this);
+                    //case 15 -> g.drawImage(rock,posX, posY, tileSideLength, tileSideLength, this);
                 }
                 //g.drawImage(otherObject,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
             }
-//            case PIPES -> {
-//                g.setColor(Color.GRAY);
-//                g.fillRect(x * (height / scale), y * (height / scale), height / scale, height / scale);
-//                g.setColor(Color.RED);
-//                g.drawLine(x * (height / scale) + (height / scale) / 3, y * (height / scale),
-//                        x * (height / scale) + (height / scale) / 3, (y + 1) * (height / scale));
-//                g.drawLine(x * (height / scale), y * (height / scale) + (height / scale) / 3,
-//                        (x + 1) * (height / scale), y * (height / scale) + (height / scale) / 3);
-//                g.setColor(Color.BLUE);
-//                g.drawLine(x * (height / scale) + (height / scale) / 3 * 2, y * (height / scale),
-//                        x * (height / scale) + (height / scale) / 3 * 2, (y + 1) * (height / scale));
-//                g.drawLine(x * (height / scale), y * (height / scale) + (height / scale) / 3 * 2,
-//                        (x + 1) * (height / scale), y * (height / scale) + (height / scale) / 3 * 2);
-//            }
+
         }
     }
 }

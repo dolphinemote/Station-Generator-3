@@ -60,6 +60,68 @@ public class Generator
         }
     }
 
+    static void place_lattices()
+    {
+        //horizontal first
+        for(int y = GLOBAL_VARS.space_border_length+random.nextInt(5); y < GLOBAL_VARS.map_size; y++)
+        {
+            int first_x = GLOBAL_VARS.space_border_length+1;
+            int last_x = GLOBAL_VARS.map_size-GLOBAL_VARS.space_border_length-1;
+            //
+            for(int x = first_x; x < last_x; x++)
+            {
+                if(Game_Map.array[x][y].marker == Markers.SPACE)
+                {
+                    if(x == first_x || x == last_x-1)
+                    {
+                        Game_Map.array[x][y].marker = Markers.GRILLE;
+                    }
+                    else if(random.nextInt(10) == 0)
+                    {
+                        Game_Map.array[x][y].marker = Markers.CATWALK;
+                    }
+                    else {
+                        Game_Map.array[x][y].marker = Markers.LATTICE;
+                    }
+                }
+            }
+            if(y+5<Game_Map.size_of_the_map)
+            {
+                y = y+random.nextInt(10)+1;
+            }
+        }
+        //vertical
+        for(int x = GLOBAL_VARS.space_border_length+random.nextInt(5); x < GLOBAL_VARS.map_size; x++)
+        {
+            int first_y = GLOBAL_VARS.space_border_length+1;
+            int last_y = GLOBAL_VARS.map_size-GLOBAL_VARS.space_border_length-1;
+            //
+            for(int y = first_y; y < last_y; y++)
+            {
+                if(Game_Map.array[x][y].marker == Markers.SPACE)
+                {
+                    if(y == first_y || y == last_y-1)
+                    {
+                        Game_Map.array[x][y].marker = Markers.GRILLE;
+                    }
+                    else if(random.nextInt(10) == 0)
+                    {
+                        Game_Map.array[x][y].marker = Markers.CATWALK;
+                    }
+                    else {
+                        Game_Map.array[x][y].marker = Markers.LATTICE;
+                    }
+                }
+            }
+            if(x+5<Game_Map.size_of_the_map)
+            {
+                x = x+random.nextInt(10)+1;
+            }
+        }
+    }
+
+
+
     //this function is called by pressing "full random" button
     static void generate(){
 
@@ -102,9 +164,10 @@ public class Generator
 
         TopRightLogPanel.add_a_message("STYLE: " + Game_Map.map_style.name);
         DOUBLE_WALL_REMOVER.say_how_many_double_walls();
-        TopRightLogPanel.add_a_message("");
+        //TopRightLogPanel.add_a_message("");
 
-        Misc_Methods.place_wall_lights();
+        place_lattices();
+        //Misc_Methods.place_wall_lights();
         MARKER_HANDLER.process_all();
         Misc_Methods.really_stupid_observer_start_placement();
     }

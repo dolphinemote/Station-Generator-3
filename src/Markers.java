@@ -6,7 +6,14 @@ public enum Markers
     SPACE,
     SPACE_BORDER,
     //PIPES,
+    //CARPET,
     AIRLOCK,
     OBJECT,
-    CARPET,
+
+    //questionable additions for testing
+    FLOOR_2,
+    PLATING,
+    GRILLE,
+    LATTICE,
+    CATWALK,
 }
