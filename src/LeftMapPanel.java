@@ -86,12 +86,13 @@ public class LeftMapPanel extends JPanel {
         leftBorder = 0;
         topBorder = 0;
         if (scale == GLOBAL_VARS.map_size) {
-            scale = 32;
-        } else if (scale == 32) {
-            scale = 16;
-        } else if (scale == 16) {
+            scale = 30;
+        } else if (scale == 30) {
+            scale = 15;
+        } else if (scale == 15) {
             scale = GLOBAL_VARS.map_size;
         }
+        repaint();
     }
 
     public void handleUpButtonPress(){
@@ -163,17 +164,21 @@ public class LeftMapPanel extends JPanel {
         last_drawn_area_number = 0;
         super.paintComponent(g);
 
-        tileSideLength = panelSideLength / scale; // Начальный размер клеточки
+        //tileSideLength = panelSideLength / scale; // Начальный размер клеточки
         //padding = (panelSideLength - (scale*tileSideLength));
+
         //padding = 1;
         //System.out.println("SCREEN HEIGHT = "+panelSideLength);
         //System.out.println("scale*TILE SIDE LENGTH = "+scale*tileSideLength);
         //System.out.println("TOTAL PADDING NEEDED = "+(panelSideLength-scale*tileSideLength));
+
+        //System.out.println(panelSideLength);
+
         //System.out.println(padding);
         for (int y = 0; y < scale; y++) {
             for (int x = 0; x < scale; x++) {
-                int posX = x * tileSideLength;
-                int posY = y * tileSideLength;
+                int posX = x * tileSideLength + padding/2;
+                int posY = y * tileSideLength + padding/2;
                 //System.out.println(posX+","+posY);
                 drawTile(g, x, y, posX, posY); // Передаем позицию и индексы
                 drawAreaNumber(g, x, y); // Передаем позицию и индексы

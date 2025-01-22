@@ -52,6 +52,8 @@ public class TopRightLogPanel extends JPanel
     TopRightLogPanel(int screen_width, int screen_height)
     {
         text_array[0] = "Start";
+        text_array[1] = "for now we use a primitive method of placing random rectangles instead of decent room generation";
+        text_array[2] = "object markers have been replaced with random icons of the objects themselves for testing them";
         setBackground(GLOBAL_VARS.main_background_color);
         x = screen_height;
         y = 0;

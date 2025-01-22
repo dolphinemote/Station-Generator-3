@@ -16,8 +16,8 @@ public class GLOBAL_VARS
     public static int maximum_rectangle_length = 12;
     public static int amount_of_object_markers = 256;
 
-    public static int map_size = 80;      // 32-64-96-128-256
-    public static int amount_of_rectangles = 96;//64
+    public static int map_size = 90;      // 32-64-96-128-256
+    public static int amount_of_rectangles = 96;
 
     //app colors
     public static Color main_background_color = Color.BLACK;//black
