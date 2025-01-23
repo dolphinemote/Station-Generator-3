@@ -16,56 +16,27 @@ public class LeftMapPanel extends JPanel {
 
     private boolean isPanelActive = false;
 
-
     Random random = new Random();
 
-    //
     int last_drawn_area_number;
-    //
+
     Image tileIcon = Toolkit.getDefaultToolkit().getImage("scuffedTileIcon.png");
 
     Image window = Toolkit.getDefaultToolkit().getImage("scuffedWindowIcon.png");
     Image airlock = Toolkit.getDefaultToolkit().getImage("scuffedAirlockIcon.png");
     Image wall = Toolkit.getDefaultToolkit().getImage("scuffedWallIcon.png");
 
-    Image locker = Toolkit.getDefaultToolkit().getImage("scuffedYellowLockerIcon.png");
-    Image table = Toolkit.getDefaultToolkit().getImage("scuffedYellowTableIcon.png");
-    Image crate = Toolkit.getDefaultToolkit().getImage("scuffedYellowCrateIcon.png");
-
-    Image chairDown = Toolkit.getDefaultToolkit().getImage("scuffedDownChairIcon.png");
-    Image chairUp = Toolkit.getDefaultToolkit().getImage("scuffedUpChairIcon.png");
-    Image chairLeft = Toolkit.getDefaultToolkit().getImage("scuffedLeftChairIcon.png");
-    Image chairRight = Toolkit.getDefaultToolkit().getImage("scuffedRightChairIcon.png");
-
-    Image scrubber = Toolkit.getDefaultToolkit().getImage("scuffedScrubberIcon.png");
-    Image vent = Toolkit.getDefaultToolkit().getImage("scuffedVentIcon.png");
-    Image pipes = Toolkit.getDefaultToolkit().getImage("scuffedPipesIcon.png");
-
-    Image otherObject = Toolkit.getDefaultToolkit().getImage("scuffedObjectIcon.png");
-
     Image lattice = Toolkit.getDefaultToolkit().getImage("scuffedLatticeIcon.png");
     Image grille = Toolkit.getDefaultToolkit().getImage("scuffedGrilleIcon.png");
-    Image plating = Toolkit.getDefaultToolkit().getImage("scuffedPlatingIcon.png");
-
-    Image decal = Toolkit.getDefaultToolkit().getImage("decalIcon.png");
-
     Image catwalk = Toolkit.getDefaultToolkit().getImage("catwalkIcon.png");
-    Image rock = Toolkit.getDefaultToolkit().getImage("rockIcon.png");
-    Image effect = Toolkit.getDefaultToolkit().getImage("effectIcon.png");
 
-    Image blueLocker = Toolkit.getDefaultToolkit().getImage("blueLockerIcon.png");
-    Image redLocker = Toolkit.getDefaultToolkit().getImage("redLockerIcon.png");
-    Image greyLocker = Toolkit.getDefaultToolkit().getImage("greyLockerIcon.png");
-
-    Image consoleUp = Toolkit.getDefaultToolkit().getImage("consoleUp.png");
-    Image consoleDown = Toolkit.getDefaultToolkit().getImage("consoleDown.png");
-    Image consoleRight = Toolkit.getDefaultToolkit().getImage("consoleRight.png");
-    Image consoleLeft = Toolkit.getDefaultToolkit().getImage("consoleLeft.png");
-
-    Image sleeperRight = Toolkit.getDefaultToolkit().getImage("sleeperRight.png");
-    Image sleeperLeft = Toolkit.getDefaultToolkit().getImage("sleeperLeft.png");
+    //Image blueLocker = Toolkit.getDefaultToolkit().getImage("blueLockerIcon.png");
+    //Image redLocker = Toolkit.getDefaultToolkit().getImage("redLockerIcon.png");
+    //Image greyLocker = Toolkit.getDefaultToolkit().getImage("greyLockerIcon.png");
 
 
+
+    Image[] object_icon_array;
 
     public void initialize(int panelSideLength){
         scale = GLOBAL_VARS.map_size;
@@ -80,6 +51,37 @@ public class LeftMapPanel extends JPanel {
 
     LeftMapPanel(int screenHeight){
         initialize(screenHeight);
+        object_icon_array = new Image[]
+                {
+                    Toolkit.getDefaultToolkit().getImage("scuffedYellowLockerIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("scuffedYellowTableIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("scuffedYellowCrateIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("scuffedDownChairIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("scuffedUpChairIcon.png"),
+                    //5
+                    Toolkit.getDefaultToolkit().getImage("scuffedLeftChairIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("scuffedRightChairIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("scuffedScrubberIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("scuffedVentIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("scuffedPipesIcon.png"),
+                    //10
+                    Toolkit.getDefaultToolkit().getImage("scuffedObjectIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("decalIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("scuffedPlatingIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("effectIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("rockIcon.png"),
+                    //15
+                    Toolkit.getDefaultToolkit().getImage("consoleUp.png"),
+                    Toolkit.getDefaultToolkit().getImage("consoleDown.png"),
+                    Toolkit.getDefaultToolkit().getImage("consoleRight.png"),
+                    Toolkit.getDefaultToolkit().getImage("consoleLeft.png"),
+                    Toolkit.getDefaultToolkit().getImage("tempPIPESandWIRE.png"),
+                    //20
+                    Toolkit.getDefaultToolkit().getImage("sleeperRight.png"),
+                    Toolkit.getDefaultToolkit().getImage("sleeperLeft.png"),
+                    Toolkit.getDefaultToolkit().getImage("wire.png"),
+                    //23
+                };
     }
 
     public void changeScale(){
@@ -129,21 +131,7 @@ public class LeftMapPanel extends JPanel {
         isPanelActive = !isPanelActive;
     }
 
-    private Color getColorForAreaNumber(int number){
-        number = number % 10;
-        return switch (number) {
-            case 1 -> Color.RED;
-            case 2 -> Color.ORANGE;
-            case 3 -> Color.YELLOW;
-            case 4 -> Color.GREEN;
-            case 5 -> Color.CYAN;
-            case 6 -> Color.BLUE;
-            case 7 -> Color.MAGENTA;
-            case 8 -> Color.PINK;
-            case 9 -> Color.WHITE;
-            default -> Color.BLACK;
-        };
-    }
+
 
     private void drawAreaNumber(Graphics g, int x, int y){
         if(last_drawn_area_number < Game_Map.array[x + leftBorder][y + topBorder].number){
@@ -164,7 +152,7 @@ public class LeftMapPanel extends JPanel {
         last_drawn_area_number = 0;
         super.paintComponent(g);
 
-        //tileSideLength = panelSideLength / scale; // Начальный размер клеточки
+        //tileSideLength = panelSideLength / scale;
         //padding = (panelSideLength - (scale*tileSideLength));
 
         //padding = 1;
@@ -180,8 +168,8 @@ public class LeftMapPanel extends JPanel {
                 int posX = x * tileSideLength + padding/2;
                 int posY = y * tileSideLength + padding/2;
                 //System.out.println(posX+","+posY);
-                drawTile(g, x, y, posX, posY); // Передаем позицию и индексы
-                drawAreaNumber(g, x, y); // Передаем позицию и индексы
+                drawTile(g, x, y, posX, posY);
+                drawAreaNumber(g, x, y);
             }
         }
         if (isPanelActive) {
@@ -189,6 +177,9 @@ public class LeftMapPanel extends JPanel {
             g.drawRect(1, 1, panelSideLength - 2, panelSideLength - 2);
         }
     }
+
+
+
 
     private void drawTile(Graphics g, int x, int y, int posX, int posY) {
         tileSideLength = panelSideLength / scale;
@@ -210,40 +201,12 @@ public class LeftMapPanel extends JPanel {
                 g.drawLine(posX, posY + tileSideLength, posX + tileSideLength, posY);
             }
             case OBJECT -> {
-                if(Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type == 0)
+                if(Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type == 100)
                 {
-                    Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type = random.nextInt(20)+1;
+                    Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type = random.nextInt(object_icon_array.length);
                 }
                 g.drawImage(tileIcon, posX, posY, tileSideLength, tileSideLength, this);
-                //g.drawImage(decal, posX, posY, tileSideLength, tileSideLength, this);
-                //g.drawImage(otherObject, posX, posY, tileSideLength, tileSideLength, this);
-                switch (Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type)
-                {
-                    case 1 -> g.drawImage(locker,posX, posY, tileSideLength, tileSideLength, this);
-                    case 2 -> g.drawImage(crate,posX, posY, tileSideLength, tileSideLength, this);
-                    case 3 -> g.drawImage(chairUp,posX , posY, tileSideLength, tileSideLength, this);
-                    case 4 -> g.drawImage(chairDown,posX , posY, tileSideLength, tileSideLength, this);
-                    case 5 -> g.drawImage(scrubber,posX, posY, tileSideLength, tileSideLength, this);
-                    case 6 -> g.drawImage(vent,posX, posY, tileSideLength, tileSideLength, this);
-                    //case 7 -> g.drawImage(pipes,posX, posY, tileSideLength, tileSideLength, this);
-                    case 8 -> g.drawImage(chairRight,posX , posY, tileSideLength, tileSideLength, this);
-                    case 9 -> g.drawImage(chairLeft,posX, posY, tileSideLength, tileSideLength, this);
-                    case 10 -> g.drawImage(otherObject,posX, posY, tileSideLength, tileSideLength, this);
-                    case 11 -> g.drawImage(table,posX, posY, tileSideLength, tileSideLength, this);
-                    //case 12 -> g.drawImage(lattice,posX , posY, tileSideLength, tileSideLength, this);
-                    case 12 -> g.drawImage(plating,posX, posY, tileSideLength, tileSideLength, this);
-                    //case 14 -> g.drawImage(grille,posX, posY, tileSideLength, tileSideLength, this);
-                    case 13 -> g.drawImage(decal,posX, posY, tileSideLength, tileSideLength, this);
-                    case 14 -> g.drawImage(effect,posX, posY, tileSideLength, tileSideLength, this);
-                    //case 15 -> g.drawImage(rock,posX, posY, tileSideLength, tileSideLength, this);
-                    case 15 -> g.drawImage(consoleUp,posX, posY, tileSideLength, tileSideLength, this);
-                    //case 17 -> g.drawImage(catwalk,posX, posY, tileSideLength, tileSideLength, this);
-                    case 16 -> g.drawImage(consoleDown,posX, posY, tileSideLength, tileSideLength, this);
-                    case 17 -> g.drawImage(consoleLeft,posX, posY, tileSideLength, tileSideLength, this);
-                    case 18 -> g.drawImage(consoleRight,posX, posY, tileSideLength, tileSideLength, this);
-                    case 19 -> g.drawImage(sleeperRight,posX, posY, tileSideLength, tileSideLength, this);
-                    case 20 -> g.drawImage(sleeperLeft,posX, posY, tileSideLength, tileSideLength, this);
-                }
+                g.drawImage(object_icon_array[Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type],posX, posY, tileSideLength, tileSideLength, this);
                 //g.drawImage(otherObject,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
             }
 

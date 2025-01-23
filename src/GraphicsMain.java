@@ -16,7 +16,8 @@ public class GraphicsMain extends JFrame
     static LeftMapPanel leftMapPanel = new LeftMapPanel(height);
     static Settings_Panel settings_panel = new Settings_Panel(width,height);
 
-
+    //Image appIcon = Toolkit.getDefaultToolkit().getImage("appIconOBJ-256.png");
+    Image appIcon = Toolkit.getDefaultToolkit().getImage("appIconTILE-256.png");
 
     GraphicsMain()
     {
@@ -40,6 +41,8 @@ public class GraphicsMain extends JFrame
         setUndecorated(true);
         setSize(width, height);
         getContentPane().setBackground(GLOBAL_VARS.second_background_color);
+
+        setIconImage(appIcon);
 
         setVisible(true);
 

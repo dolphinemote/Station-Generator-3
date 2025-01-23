@@ -110,5 +110,20 @@ public class Misc_Methods
             }
         }
     }
+    private Color getColorForAreaNumber(int number){
+        number = number % 10;
+        return switch (number) {
+            case 1 -> Color.RED;
+            case 2 -> Color.ORANGE;
+            case 3 -> Color.YELLOW;
+            case 4 -> Color.GREEN;
+            case 5 -> Color.CYAN;
+            case 6 -> Color.BLUE;
+            case 7 -> Color.MAGENTA;
+            case 8 -> Color.PINK;
+            case 9 -> Color.WHITE;
+            default -> Color.BLACK;
+        };
+    }
 
 }
