@@ -20,15 +20,15 @@ public class LeftMapPanel extends JPanel {
 
     int last_drawn_area_number;
 
-    Image tileIcon = Toolkit.getDefaultToolkit().getImage("scuffedTileIcon.png");
+    Image tileIcon = Toolkit.getDefaultToolkit().getImage("icons/tile.png");
 
-    Image window = Toolkit.getDefaultToolkit().getImage("scuffedWindowIcon.png");
-    Image airlock = Toolkit.getDefaultToolkit().getImage("scuffedAirlockIcon.png");
-    Image wall = Toolkit.getDefaultToolkit().getImage("scuffedWallIcon.png");
+    Image window = Toolkit.getDefaultToolkit().getImage("icons/window.png");
+    Image airlock = Toolkit.getDefaultToolkit().getImage("icons/airlock.png");
+    Image wall = Toolkit.getDefaultToolkit().getImage("icons/wall.png");
 
-    Image lattice = Toolkit.getDefaultToolkit().getImage("scuffedLatticeIcon.png");
-    Image grille = Toolkit.getDefaultToolkit().getImage("scuffedGrilleIcon.png");
-    Image catwalk = Toolkit.getDefaultToolkit().getImage("catwalkIcon.png");
+    Image lattice = Toolkit.getDefaultToolkit().getImage("icons/lattice.png");
+    Image grille = Toolkit.getDefaultToolkit().getImage("icons/grille.png");
+    Image catwalk = Toolkit.getDefaultToolkit().getImage("icons/catwalk.png");
 
     //Image blueLocker = Toolkit.getDefaultToolkit().getImage("blueLockerIcon.png");
     //Image redLocker = Toolkit.getDefaultToolkit().getImage("redLockerIcon.png");
@@ -53,33 +53,35 @@ public class LeftMapPanel extends JPanel {
         initialize(screenHeight);
         object_icon_array = new Image[]
                 {
-                    Toolkit.getDefaultToolkit().getImage("scuffedYellowLockerIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("scuffedYellowTableIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("scuffedYellowCrateIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("scuffedDownChairIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("scuffedUpChairIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/yellow_closet.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/yellow_table.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/yellow_crate.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/chair_down.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/chair_up.png"),
                     //5
-                    Toolkit.getDefaultToolkit().getImage("scuffedLeftChairIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("scuffedRightChairIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("scuffedScrubberIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("scuffedVentIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("scuffedPipesIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/chair_left.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/chair_right.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/scrubber.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/vent.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/pipes.png"),
                     //10
-                    Toolkit.getDefaultToolkit().getImage("scuffedObjectIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("decalIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("scuffedPlatingIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("effectIcon.png"),
-                    Toolkit.getDefaultToolkit().getImage("rockIcon.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/object.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/decal.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/plating.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/effect.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/rock.png"),
                     //15
-                    Toolkit.getDefaultToolkit().getImage("consoleUp.png"),
-                    Toolkit.getDefaultToolkit().getImage("consoleDown.png"),
-                    Toolkit.getDefaultToolkit().getImage("consoleRight.png"),
-                    Toolkit.getDefaultToolkit().getImage("consoleLeft.png"),
-                    Toolkit.getDefaultToolkit().getImage("tempPIPESandWIRE.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/console_up.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/console_down.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/console_right.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/console_left.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/wire.png"),
                     //20
-                    Toolkit.getDefaultToolkit().getImage("sleeperRight.png"),
-                    Toolkit.getDefaultToolkit().getImage("sleeperLeft.png"),
-                    Toolkit.getDefaultToolkit().getImage("wire.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/sleeper_right.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/sleeper_left.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/tempPIPESandWIRE.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/red_closet.png"),
+                    Toolkit.getDefaultToolkit().getImage("icons/blue_closet.png"),
                     //23
                 };
     }

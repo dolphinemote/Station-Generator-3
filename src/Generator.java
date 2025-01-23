@@ -63,7 +63,8 @@ public class Generator
     static void place_lattices()
     {
         //horizontal first
-        for(int y = GLOBAL_VARS.space_border_length+random.nextInt(5); y < GLOBAL_VARS.map_size; y++)
+        for(int y = GLOBAL_VARS.space_border_length+random.nextInt(5)+1;
+            y < GLOBAL_VARS.map_size-GLOBAL_VARS.space_border_length-1; y++)
         {
             int first_x = GLOBAL_VARS.space_border_length;
             int last_x = GLOBAL_VARS.map_size-GLOBAL_VARS.space_border_length;
@@ -91,7 +92,8 @@ public class Generator
             }
         }
         //vertical
-        for(int x = GLOBAL_VARS.space_border_length+random.nextInt(5); x < GLOBAL_VARS.map_size; x++)
+        for(int x = GLOBAL_VARS.space_border_length+1+random.nextInt(5);
+            x < GLOBAL_VARS.map_size-GLOBAL_VARS.space_border_length-1; x++)
         {
             int first_y = GLOBAL_VARS.space_border_length;
             int last_y = GLOBAL_VARS.map_size-GLOBAL_VARS.space_border_length;
