@@ -65,8 +65,8 @@ public class Generator
         //horizontal first
         for(int y = GLOBAL_VARS.space_border_length+random.nextInt(5); y < GLOBAL_VARS.map_size; y++)
         {
-            int first_x = GLOBAL_VARS.space_border_length+1;
-            int last_x = GLOBAL_VARS.map_size-GLOBAL_VARS.space_border_length-1;
+            int first_x = GLOBAL_VARS.space_border_length;
+            int last_x = GLOBAL_VARS.map_size-GLOBAL_VARS.space_border_length;
             //
             for(int x = first_x; x < last_x; x++)
             {
@@ -93,8 +93,8 @@ public class Generator
         //vertical
         for(int x = GLOBAL_VARS.space_border_length+random.nextInt(5); x < GLOBAL_VARS.map_size; x++)
         {
-            int first_y = GLOBAL_VARS.space_border_length+1;
-            int last_y = GLOBAL_VARS.map_size-GLOBAL_VARS.space_border_length-1;
+            int first_y = GLOBAL_VARS.space_border_length;
+            int last_y = GLOBAL_VARS.map_size-GLOBAL_VARS.space_border_length;
             //
             for(int y = first_y; y < last_y; y++)
             {
@@ -164,7 +164,7 @@ public class Generator
 
         TopRightLogPanel.add_a_message("STYLE: " + Game_Map.map_style.name);
         DOUBLE_WALL_REMOVER.say_how_many_double_walls();
-        //TopRightLogPanel.add_a_message("");
+        TopRightLogPanel.add_a_message("");
 
         place_lattices();
         //Misc_Methods.place_wall_lights();

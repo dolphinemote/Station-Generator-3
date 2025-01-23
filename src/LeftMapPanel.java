@@ -28,9 +28,9 @@ public class LeftMapPanel extends JPanel {
     Image airlock = Toolkit.getDefaultToolkit().getImage("scuffedAirlockIcon.png");
     Image wall = Toolkit.getDefaultToolkit().getImage("scuffedWallIcon.png");
 
-    Image crate = Toolkit.getDefaultToolkit().getImage("scuffedYellowLockerIcon.png");
-    Image locker = Toolkit.getDefaultToolkit().getImage("scuffedYellowTableIcon.png");
-    Image table = Toolkit.getDefaultToolkit().getImage("scuffedYellowCrateIcon.png");
+    Image locker = Toolkit.getDefaultToolkit().getImage("scuffedYellowLockerIcon.png");
+    Image table = Toolkit.getDefaultToolkit().getImage("scuffedYellowTableIcon.png");
+    Image crate = Toolkit.getDefaultToolkit().getImage("scuffedYellowCrateIcon.png");
 
     Image chairDown = Toolkit.getDefaultToolkit().getImage("scuffedDownChairIcon.png");
     Image chairUp = Toolkit.getDefaultToolkit().getImage("scuffedUpChairIcon.png");
@@ -196,7 +196,7 @@ public class LeftMapPanel extends JPanel {
             case SPACE -> { }
             case WALL -> g.drawImage(wall,posX, posY, tileSideLength, tileSideLength, this);
             case WINDOW -> {
-                g.drawImage(plating, posX, posY, tileSideLength, tileSideLength, this);
+                //g.drawImage(plating, posX, posY, tileSideLength, tileSideLength, this);
                 g.drawImage(window, posX, posY, tileSideLength, tileSideLength, this);
             }
             case AIRLOCK -> g.drawImage(airlock,posX, posY, tileSideLength, tileSideLength, this);
@@ -215,12 +215,12 @@ public class LeftMapPanel extends JPanel {
                     Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type = random.nextInt(20)+1;
                 }
                 g.drawImage(tileIcon, posX, posY, tileSideLength, tileSideLength, this);
-                g.drawImage(decal, posX, posY, tileSideLength, tileSideLength, this);
+                //g.drawImage(decal, posX, posY, tileSideLength, tileSideLength, this);
                 //g.drawImage(otherObject, posX, posY, tileSideLength, tileSideLength, this);
                 switch (Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type)
                 {
-                    case 1 -> g.drawImage(crate,posX, posY, tileSideLength, tileSideLength, this);
-                    case 2 -> g.drawImage(table,posX, posY, tileSideLength, tileSideLength, this);
+                    case 1 -> g.drawImage(locker,posX, posY, tileSideLength, tileSideLength, this);
+                    case 2 -> g.drawImage(crate,posX, posY, tileSideLength, tileSideLength, this);
                     case 3 -> g.drawImage(chairUp,posX , posY, tileSideLength, tileSideLength, this);
                     case 4 -> g.drawImage(chairDown,posX , posY, tileSideLength, tileSideLength, this);
                     case 5 -> g.drawImage(scrubber,posX, posY, tileSideLength, tileSideLength, this);
@@ -229,7 +229,7 @@ public class LeftMapPanel extends JPanel {
                     case 8 -> g.drawImage(chairRight,posX , posY, tileSideLength, tileSideLength, this);
                     case 9 -> g.drawImage(chairLeft,posX, posY, tileSideLength, tileSideLength, this);
                     case 10 -> g.drawImage(otherObject,posX, posY, tileSideLength, tileSideLength, this);
-                    case 11 -> g.drawImage(locker,posX, posY, tileSideLength, tileSideLength, this);
+                    case 11 -> g.drawImage(table,posX, posY, tileSideLength, tileSideLength, this);
                     //case 12 -> g.drawImage(lattice,posX , posY, tileSideLength, tileSideLength, this);
                     case 12 -> g.drawImage(plating,posX, posY, tileSideLength, tileSideLength, this);
                     //case 14 -> g.drawImage(grille,posX, posY, tileSideLength, tileSideLength, this);
