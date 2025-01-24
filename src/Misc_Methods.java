@@ -34,15 +34,15 @@ public class Misc_Methods
 
 
 
-    public static boolean is_surrounded_by_marker(int x, int y, Markers marker)
+    public static boolean is_there_a_maker_nearby(int x, int y, Markers marker)
     {
-        return (Game_Map.array[x][y - 1].marker == marker &&
-                Game_Map.array[x + 1][y - 1].marker == marker &&
-                Game_Map.array[x + 1][y].marker == marker &&
-                Game_Map.array[x + 1][y + 1].marker == marker &&
-                Game_Map.array[x][y + 1].marker == marker &&
-                Game_Map.array[x - 1][y + 1].marker == marker &&
-                Game_Map.array[x - 1][y].marker == marker &&
+        return (Game_Map.array[x][y - 1].marker == marker ||
+                Game_Map.array[x + 1][y - 1].marker == marker ||
+                Game_Map.array[x + 1][y].marker == marker ||
+                Game_Map.array[x + 1][y + 1].marker == marker ||
+                Game_Map.array[x][y + 1].marker == marker ||
+                Game_Map.array[x - 1][y + 1].marker == marker ||
+                Game_Map.array[x - 1][y].marker == marker ||
                 Game_Map.array[x - 1][y - 1].marker == marker);
     }
 

@@ -123,6 +123,58 @@ public class Generator
     }
 
 
+    static void terrible_floor2_marker_placement()
+    {
+        int min_size = 2;
+        int max_size = 8;
+        int random_x;
+        int random_y;
+        int size_x;
+        int size_y;
+        int how_many_times_we_should_place_floor2 = GLOBAL_VARS.amount_of_rectangles/2;
+        int already_placed = 0;
+        //int how_many_we_already_placed = 0;
+        //Misc_Methods.is_there_a_maker_nearby()
+        while(already_placed < how_many_times_we_should_place_floor2)
+        {
+            random_x = random.nextInt(GLOBAL_VARS.map_size-2*GLOBAL_VARS.space_border_length)+GLOBAL_VARS.space_border_length;
+            random_y = random.nextInt(GLOBAL_VARS.map_size-2*GLOBAL_VARS.space_border_length)+GLOBAL_VARS.space_border_length;
+            if(random_x == random_y)
+            {
+                continue;
+            }
+            size_x = random.nextInt(max_size-min_size)+min_size;
+            size_y = random.nextInt(max_size-min_size)+min_size;
+            for(int x = random_x; x<random_x+size_x+1;x++)
+            {
+                for (int y = random_y; y<random_y+size_y+1;y++)
+                {
+                    if(Game_Map.array[x][y].marker != Markers.FLOOR)
+                    {
+                        break;
+                    }
+                    if(y == random_y + size_y && x == random_x + size_x)
+                    {
+                        for(int i = random_x; i<random_x+size_x+1;i++)
+                        {
+                            for (int j = random_y; j<random_y+size_y+1;j++)
+                            {
+                                switch(random.nextInt(3))
+                                {
+                                    case 1,2 -> Game_Map.array[i][j].marker = Markers.FLOOR_2;
+                                    case 0 -> Game_Map.array[i][j].marker = Markers.PLATING;
+                                }
+
+                            }
+                        }
+                        already_placed++;
+                    }
+                }
+            }
+            already_placed++;
+            System.out.println(already_placed);
+        }
+    }
 
     //this function is called by pressing "full random" button
     static void generate(){
@@ -151,6 +203,9 @@ public class Generator
 
         //
         OBJECT_MARKER_PLACER.place_all_object_markers();
+
+        //placing alternative floor
+        terrible_floor2_marker_placement();
 
         //
         number_of_stations_generated++;

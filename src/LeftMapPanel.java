@@ -20,7 +20,8 @@ public class LeftMapPanel extends JPanel {
 
     int last_drawn_area_number;
 
-    Image tileIcon = Toolkit.getDefaultToolkit().getImage("icons/tile.png");
+    Image tile = Toolkit.getDefaultToolkit().getImage("icons/tile.png");
+    Image tile_big = Toolkit.getDefaultToolkit().getImage("icons/tileBIG.png");
 
     Image window = Toolkit.getDefaultToolkit().getImage("icons/window.png");
     Image airlock = Toolkit.getDefaultToolkit().getImage("icons/airlock.png");
@@ -193,7 +194,9 @@ public class LeftMapPanel extends JPanel {
                 g.drawImage(window, posX, posY, tileSideLength, tileSideLength, this);
             }
             case AIRLOCK -> g.drawImage(airlock,posX, posY, tileSideLength, tileSideLength, this);
-            case FLOOR -> g.drawImage(tileIcon, posX, posY, tileSideLength, tileSideLength, this);
+            case FLOOR -> g.drawImage(tile, posX, posY, tileSideLength, tileSideLength, this);
+            case FLOOR_2 -> g.drawImage(tile_big, posX, posY, tileSideLength, tileSideLength, this);
+            case PLATING -> g.drawImage(object_icon_array[12], posX, posY, tileSideLength, tileSideLength, this);
             case LATTICE -> g.drawImage(lattice, posX, posY, tileSideLength, tileSideLength, this);
             case GRILLE -> g.drawImage(grille, posX, posY, tileSideLength, tileSideLength, this);
             case CATWALK -> g.drawImage(catwalk, posX, posY, tileSideLength, tileSideLength, this);
@@ -207,7 +210,7 @@ public class LeftMapPanel extends JPanel {
                 {
                     Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type = random.nextInt(object_icon_array.length);
                 }
-                g.drawImage(tileIcon, posX, posY, tileSideLength, tileSideLength, this);
+                g.drawImage(tile, posX, posY, tileSideLength, tileSideLength, this);
                 g.drawImage(object_icon_array[Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type],posX, posY, tileSideLength, tileSideLength, this);
                 //g.drawImage(otherObject,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
             }
