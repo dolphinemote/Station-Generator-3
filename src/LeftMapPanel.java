@@ -22,10 +22,12 @@ public class LeftMapPanel extends JPanel {
 
     Image tile = Toolkit.getDefaultToolkit().getImage("icons/tile.png");
     Image tile_big = Toolkit.getDefaultToolkit().getImage("icons/tileBIG.png");
+    Image plating = Toolkit.getDefaultToolkit().getImage("icons/plating.png");
+
 
     Image window = Toolkit.getDefaultToolkit().getImage("icons/window.png");
     Image airlock = Toolkit.getDefaultToolkit().getImage("icons/airlock.png");
-    Image wall = Toolkit.getDefaultToolkit().getImage("icons/wall.png");
+    Image wall = Toolkit.getDefaultToolkit().getImage("icons/wallALT.png");
 
     Image lattice = Toolkit.getDefaultToolkit().getImage("icons/lattice.png");
     Image grille = Toolkit.getDefaultToolkit().getImage("icons/grille.png");
@@ -52,6 +54,7 @@ public class LeftMapPanel extends JPanel {
 
     LeftMapPanel(int screenHeight){
         initialize(screenHeight);
+
         object_icon_array = new Image[]
                 {
                     Toolkit.getDefaultToolkit().getImage("icons/yellow_closet.png"),
@@ -64,27 +67,30 @@ public class LeftMapPanel extends JPanel {
                     Toolkit.getDefaultToolkit().getImage("icons/chair_right.png"),
                     Toolkit.getDefaultToolkit().getImage("icons/scrubber.png"),
                     Toolkit.getDefaultToolkit().getImage("icons/vent.png"),
-                    Toolkit.getDefaultToolkit().getImage("icons/pipes.png"),
+                    //Toolkit.getDefaultToolkit().getImage("icons/pipes.png"),
                     //10
                     Toolkit.getDefaultToolkit().getImage("icons/object.png"),
                     Toolkit.getDefaultToolkit().getImage("icons/decal.png"),
-                    Toolkit.getDefaultToolkit().getImage("icons/plating.png"),
+                    //Toolkit.getDefaultToolkit().getImage("icons/plating.png"),
                     Toolkit.getDefaultToolkit().getImage("icons/effect.png"),
-                    Toolkit.getDefaultToolkit().getImage("icons/rock.png"),
+                    //
+                        //
+                        // Toolkit.getDefaultToolkit().getImage("icons/rock.png"),
                     //15
                     Toolkit.getDefaultToolkit().getImage("icons/console_up.png"),
                     Toolkit.getDefaultToolkit().getImage("icons/console_down.png"),
                     Toolkit.getDefaultToolkit().getImage("icons/console_right.png"),
                     Toolkit.getDefaultToolkit().getImage("icons/console_left.png"),
-                    Toolkit.getDefaultToolkit().getImage("icons/wire.png"),
+                    //Toolkit.getDefaultToolkit().getImage("icons/wire.png"),
                     //20
                     Toolkit.getDefaultToolkit().getImage("icons/sleeper_right.png"),
                     Toolkit.getDefaultToolkit().getImage("icons/sleeper_left.png"),
-                    Toolkit.getDefaultToolkit().getImage("icons/tempPIPESandWIRE.png"),
-                    Toolkit.getDefaultToolkit().getImage("icons/red_closet.png"),
-                    Toolkit.getDefaultToolkit().getImage("icons/blue_closet.png"),
+                    //Toolkit.getDefaultToolkit().getImage("icons/tempPIPESandWIRE.png"),
+                    //Toolkit.getDefaultToolkit().getImage("icons/red_closet.png"),
+                    //Toolkit.getDefaultToolkit().getImage("icons/blue_closet.png"),
                     //23
                 };
+        //object_icon_array = new Image[]{};
     }
 
     public void changeScale(){
@@ -178,6 +184,7 @@ public class LeftMapPanel extends JPanel {
         if (isPanelActive) {
             g.setColor(GLOBAL_VARS.highlight_color);
             g.drawRect(1, 1, panelSideLength - 2, panelSideLength - 2);
+            System.out.println("PANEL SIDE LENGTH: "+ panelSideLength);
         }
     }
 
@@ -194,9 +201,11 @@ public class LeftMapPanel extends JPanel {
                 g.drawImage(window, posX, posY, tileSideLength, tileSideLength, this);
             }
             case AIRLOCK -> g.drawImage(airlock,posX, posY, tileSideLength, tileSideLength, this);
-            case FLOOR -> g.drawImage(tile, posX, posY, tileSideLength, tileSideLength, this);
+            case FLOOR -> {
+                g.drawImage(tile, posX, posY, tileSideLength, tileSideLength, this);
+            }
             case FLOOR_2 -> g.drawImage(tile_big, posX, posY, tileSideLength, tileSideLength, this);
-            case PLATING -> g.drawImage(object_icon_array[12], posX, posY, tileSideLength, tileSideLength, this);
+            case PLATING -> g.drawImage(plating, posX, posY, tileSideLength, tileSideLength, this);
             case LATTICE -> g.drawImage(lattice, posX, posY, tileSideLength, tileSideLength, this);
             case GRILLE -> g.drawImage(grille, posX, posY, tileSideLength, tileSideLength, this);
             case CATWALK -> g.drawImage(catwalk, posX, posY, tileSideLength, tileSideLength, this);
@@ -211,6 +220,7 @@ public class LeftMapPanel extends JPanel {
                     Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type = random.nextInt(object_icon_array.length);
                 }
                 g.drawImage(tile, posX, posY, tileSideLength, tileSideLength, this);
+                g.drawImage(object_icon_array[10], posX, posY, tileSideLength, tileSideLength, this);
                 g.drawImage(object_icon_array[Game_Map.array[x+leftBorder][y+topBorder].random_object_icon_type],posX, posY, tileSideLength, tileSideLength, this);
                 //g.drawImage(otherObject,x * tileSideLength, y * tileSideLength, tileSideLength, tileSideLength, this);
             }
