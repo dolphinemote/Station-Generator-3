@@ -11,12 +11,12 @@ public class GLOBAL_VARS
     //this class should contain things that can be changed through settings
 
     //space tiles that can't be used for spawning and form a surrounding buffer zone
-    public static int space_border_length = 8;//8-32
+    public static int space_border_length = 1;//8-32
     public static int min_rectangle_length = 5;
     public static int maximum_rectangle_length = 12;
     public static int amount_of_object_markers = 256;
 
-    public static int map_size = 90;      // 32-64-96-128-256
+    public static int map_size = 80;      // 32-64-96-128-256
     public static int amount_of_rectangles = 96;
 
     //app colors

@@ -44,7 +44,7 @@ public class Settings_Panel extends JPanel
 
     public static Setting[] list_of_settings = new Setting[6];
     //Setting map_size = new Setting("Map Size", new int[]{64, 80, 96, 128, 256}, 1);
-    Setting temp_setting = new Setting("Map Size (change is disabled for now)", new int[]{90}, 0);
+    Setting temp_setting = new Setting("Map Size (change is disabled for now)", new int[]{80}, 0);
     Setting amount_of_object_markers = new Setting("Amount of Object Markers", new int[]{0, 64, 128, 256}, 3);
     Setting amount_of_rectangles = new Setting("Amount of Rectangles", new int[]{64, 96, 128, 256}, 1);
     Setting border_length = new Setting("Border Length", new int[]{1, 8, 16}, 0);
