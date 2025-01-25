@@ -70,7 +70,8 @@ public class LeftMapPanel extends JPanel {
                 safeLoadImage("icons/console_right.png"),
                 safeLoadImage("icons/console_left.png"),
                 safeLoadImage("icons/sleeper_right.png"),
-                safeLoadImage("icons/sleeper_left.png")
+                safeLoadImage("icons/sleeper_left.png"),
+                safeLoadImage("icons/canister.png"),
         };
     }
 
