@@ -53,6 +53,7 @@ public class LeftMapPanel extends JPanel {
 
     private Image[] createObjectIconsArray() {
         return new Image[] {
+                safeLoadImage("icons/decal.png"),
                 safeLoadImage("icons/yellow_closet.png"),
                 safeLoadImage("icons/yellow_table.png"),
                 safeLoadImage("icons/yellow_crate.png"),
@@ -63,7 +64,6 @@ public class LeftMapPanel extends JPanel {
                 safeLoadImage("icons/scrubber.png"),
                 safeLoadImage("icons/vent.png"),
                 safeLoadImage("icons/object.png"),
-                safeLoadImage("icons/decal.png"),
                 safeLoadImage("icons/effect.png"),
                 safeLoadImage("icons/console_up.png"),
                 safeLoadImage("icons/console_down.png"),
@@ -158,6 +158,7 @@ public class LeftMapPanel extends JPanel {
             int iconIndex = Game_Map.array[mapX][mapY].random_object_icon_type;
             if (iconIndex < object_icon_array.length) {
                 g.drawImage(tile, posX, posY, tileSize, tileSize, this);
+                g.drawImage(object_icon_array[0], posX, posY, tileSize, tileSize, this);
                 g.drawImage(object_icon_array[iconIndex], posX, posY, tileSize, tileSize, this);
             }
         }

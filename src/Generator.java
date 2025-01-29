@@ -127,7 +127,7 @@ public class Generator
 
 
     static void terrible_floor2_marker_placement() {
-        int min_size = 2;
+        int min_size = 1;
         int max_size = 8;
         int how_many_times_we_should_place_floor2 = GLOBAL_VARS.amount_of_rectangles / 2;
         int already_placed = 0;
@@ -158,9 +158,10 @@ public class Generator
                 if (!canReplace) break;
             }
             if (canReplace) {
-                Markers selectedMarker = (random.nextInt(3) == 0) ? Markers.FLOOR_2 : Markers.FLOOR_2;//floor2
+                Markers selectedMarker = (random.nextInt(3) == 0) ? Markers.PLATING : Markers.FLOOR_2;//floor2
                 for (int x = random_x; x <= random_x + size_x; x++) {
                     for (int y = random_y; y <= random_y + size_y; y++) {
+
                         Game_Map.array[x][y].marker = selectedMarker;
                     }
                 }
@@ -206,7 +207,7 @@ public class Generator
         number_of_stations_generated++;
         TopRightLogPanel.add_a_message("Generation number " + number_of_stations_generated);
         TopRightLogPanel.add_a_message("Map Size: " + GLOBAL_VARS.map_size);
-        TopRightLogPanel.add_a_message("---");
+
 
         //
         AREA_NUMBER_ASSIGNING.display_area_statistics();
@@ -216,7 +217,8 @@ public class Generator
 
         TopRightLogPanel.add_a_message("STYLE: " + Game_Map.map_style.name);
         DOUBLE_WALL_REMOVER.say_how_many_double_walls();
-        //TopRightLogPanel.add_a_message("---");
+        TopRightLogPanel.add_a_message("---");
+        TopRightLogPanel.add_a_message("---");
 
         place_lattices();
         //Misc_Methods.place_wall_lights();

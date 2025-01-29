@@ -11,7 +11,7 @@ public class CHOOSE_MAP_STYLE
 
         //System.out.println(random_index);
 
-        TopRightLogPanel.add_a_message("STYLE: " + GLOBAL_VARS.list_of_styles[random_index].name);
+        //TopRightLogPanel.add_a_message("STYLE: " + GLOBAL_VARS.list_of_styles[random_index].name);
 
         return GLOBAL_VARS.list_of_styles[random_index];
     }
