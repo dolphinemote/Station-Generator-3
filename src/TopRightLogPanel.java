@@ -19,11 +19,16 @@ public class TopRightLogPanel extends JPanel {
         int x = screen_width - width;
         this.setBounds(x, 0, width, height);
 
-        add_a_message("Start");
+        text_array[0]=("Start");
         add_a_message("For now we use a primitive method of placing random rectangles");
         add_a_message("instead of decent room generation");
         add_a_message("Object marker icons have been replaced with random icons");
         add_a_message("of the objects themselves for testing them");
+        add_a_message("-");
+        add_a_message("I don't know if anyone reads this");
+        add_a_message("but this small test personal application no longer fulfills");
+        add_a_message("its original purpose and is used for testing icons");
+        //
     }
 
     private MessageData getMessageFromEnd(int reverseIndex) {

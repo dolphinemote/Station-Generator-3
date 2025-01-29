@@ -216,6 +216,7 @@ public class Generator
         AREA_ASSIGNING.assign_other_areas();
 
         TopRightLogPanel.add_a_message("STYLE: " + Game_Map.map_style.name);
+
         DOUBLE_WALL_REMOVER.say_how_many_double_walls();
         TopRightLogPanel.add_a_message("---");
         TopRightLogPanel.add_a_message("---");
