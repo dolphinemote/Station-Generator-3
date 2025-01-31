@@ -43,7 +43,7 @@ public class Array_To_DMM {
                             + Game_Map.array[x][y].south_wall_mount
                             + Game_Map.array[x][y].west_wall_mount
                             + Game_Map.array[x][y].object
-                            + Game_Map.array[x][y].getStringOfAllCombinedItems()
+                            + Game_Map.array[x][y].get_string_of_all_combined_items()
                             + Game_Map.array[x][y].area.path
                             + ")\n";
                     number3++;

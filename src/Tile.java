@@ -25,7 +25,7 @@ public class Tile
 
     ArrayList<String> items = new ArrayList<>();
 
-    String getStringOfAllCombinedItems(){
+    String get_string_of_all_combined_items(){
         StringBuilder ReturnString = new StringBuilder();
         for (String item : items) {
             ReturnString.append(item);

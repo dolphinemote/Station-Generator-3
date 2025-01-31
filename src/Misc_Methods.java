@@ -99,10 +99,12 @@ public class Misc_Methods
 
     static void really_stupid_observer_start_placement()//i am so lazy
     {
+        int random_x;
+        int random_y;
         for(int i = 0; i < 10000; i++)
         {
-            int random_x = random.nextInt(Game_Map.size_of_the_map - GLOBAL_VARS.space_border_length * 2) + GLOBAL_VARS.space_border_length;
-            int random_y = random.nextInt(Game_Map.size_of_the_map - GLOBAL_VARS.space_border_length * 2) + GLOBAL_VARS.space_border_length;
+            random_x = random.nextInt(Game_Map.size_of_the_map - GLOBAL_VARS.space_border_length * 2) + GLOBAL_VARS.space_border_length;
+            random_y = random.nextInt(Game_Map.size_of_the_map - GLOBAL_VARS.space_border_length * 2) + GLOBAL_VARS.space_border_length;
             if(Game_Map.array[random_x][random_y].object.equals("") && Game_Map.array[random_x][random_y].marker == Markers.FLOOR)
             {
                 Game_Map.array[random_x][random_y].object = "/obj/effect/landmark/observer_start,";

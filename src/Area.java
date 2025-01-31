@@ -11,6 +11,7 @@ public class Area
     String floor_path;
     String table_path;
 
+    String floor2_path;
 
     String[] floor_pool;
     String[] crate_pool;
@@ -43,5 +44,10 @@ public class Area
 
         this.floor_path = floor_pool[random.nextInt(floor_pool.length)];
         this.table_path = table_pool[random.nextInt(table_pool.length)];
+
+
+        this.floor2_path = floor_pool[random.nextInt(floor_pool.length)];
+
+
     }
 }

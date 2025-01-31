@@ -73,9 +73,8 @@ public class Settings_Panel extends JPanel
 
     void menu_called()
     {
-
-        chosen_button = 0;
         //if visible makes un-visible and vice versa
+        chosen_button = 0;
         this.setVisible(!isVisible());
         if(isVisible())
         {

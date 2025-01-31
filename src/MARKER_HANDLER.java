@@ -12,10 +12,29 @@ public class MARKER_HANDLER
                         Game_Map.array[i][j].object = Game_Map.array[i][j].area.airlock_path;
                         Game_Map.array[i][j].turf = Game_Map.array[i][j].area.floor_path;
                     }
+                    // String lattice_insead_of_window = "/turf/open/space/basic, /obj/structure/lattice,";
+                    // String grille_instead_of_window = "/turf/open/floor/plating, /obj/structure/grille,";
+                    case CATWALK -> {
+                        Game_Map.array[i][j].turf = "/turf/open/space/basic,/obj/structure/lattice/catwalk,";
+                    }
+                    case LATTICE -> {
+                        Game_Map.array[i][j].turf = "/turf/open/space/basic,/obj/structure/lattice,";
+                    }
+                    case PLATING -> {
+                        Game_Map.array[i][j].turf = "/turf/open/floor/plating,";
+                    }
+                    case GRILLE -> {
+                        Game_Map.array[i][j].turf = "/turf/open/space/basic,/obj/structure/lattice,/obj/structure/grille,";
+                    }
                     case WALL -> {
                         Game_Map.array[i][j].turf = Game_Map.array[i][j].area.wall_path;
                     }
-                    case FLOOR -> {Game_Map.array[i][j].turf = Game_Map.array[i][j].area.floor_path;}
+                    case FLOOR -> {
+                        Game_Map.array[i][j].turf = Game_Map.array[i][j].area.floor_path;
+                    }
+                    case FLOOR_2 -> {
+                        Game_Map.array[i][j].turf = Game_Map.array[i][j].area.floor2_path;
+                    }
                     case WINDOW -> {
                         //Game_Map.array[i][j].turf = "/turf/open/floor/plating,";
                         Game_Map.array[i][j].object = Game_Map.array[i][j].area.window_spawner_path;

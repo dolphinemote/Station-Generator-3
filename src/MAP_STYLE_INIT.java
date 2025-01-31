@@ -527,7 +527,7 @@ public class MAP_STYLE_INIT {
                     new String[]{"/obj/structure/table,","/obj/structure/table/reinforced,"});
             Area security_SpaceRuin = new Area(
                     "/area/station/medical",
-                    "/obj/machinery/door/airlock/securit,/obj/effect/mapping_helpers/airlock/autoname,",
+                    "/obj/machinery/door/airlock/security,/obj/effect/mapping_helpers/airlock/autoname,",
                     lattice_insead_of_window,
                     r_wall_path,
                     new String[]{"/turf/open/floor/plating,"},
