@@ -5,7 +5,7 @@ public class MAP_STYLE_INIT {
     static String r_wall_path = "/turf/closed/wall/r_wall,";
     static String titanium_wall_path = "/turf/closed/wall/mineral/titanium,";
     static String plastitanium_wall_path= "/turf/closed/wall/mineral/plastitanium,";
-    static String spaceship_hull_wall_path = "/turf/closed/wall/mineral/titanium/spaceship,";
+    static String spaceship_hull_wall_path = "/turf/closed/wall/mineral/titanium/survival,";
 
     //windows
     static String window_spawner = "/obj/effect/spawner/structure/window, /turf/open/floor/plating,";
@@ -60,7 +60,7 @@ public class MAP_STYLE_INIT {
                     "/obj/item/reagent_containers/cup/glass/coffee",
                     "/obj/item/folder",
                     "/obj/item/paper_bin,/obj/item/pen",
-                    "/obj/item/modular_computer/laptop/preset/civilian/closed",
+                    "/obj/item/modular_computer/laptop/preset/civilian",
                     "/obj/item/flashlight/lamp/green",
                     "/obj/item/flashlight/lamp",
             };
@@ -105,11 +105,9 @@ public class MAP_STYLE_INIT {
     static String[] basic_CIN_LOOT_pool = new String[]{
             "/obj/item/flashlight/lamp/green",
             "/obj/item/flashlight/lamp",
-            //"/obj/item/sign/flag/nri",
-            //"/obj/item/pen/screwdriver",
+
             "/obj/item/trench_tool",
-            //"/obj/item/storage/box/nri_survival_pack/raider",
-            //"/obj/item/circuitboard/machine/biogenerator/food_replicator",
+
             "/obj/item/wrench",
             "/obj/item/crowbar",
             "/obj/item/screwdriver",
@@ -117,8 +115,7 @@ public class MAP_STYLE_INIT {
             "/obj/item/storage/toolbox/mechanical",
             "/obj/item/storage/toolbox/electrical",
             "/obj/item/storage/box/stockparts/basic",
-            //"/obj/item/storage/box/colonial_rations",
-            //"/obj/item/storage/box/nri_flares",
+
             "/obj/item/crowbar/power",
             "/obj/item/tank/internals/oxygen/red",
             "/obj/item/tank/internals/oxygen/yellow",
@@ -139,10 +136,10 @@ public class MAP_STYLE_INIT {
     };
 
     static String[] engineering_MixedCorps_loot_pool = new String[]{
-            "/obj/item/crowbar/large/doorforcer",
-            "/obj/item/pickaxe/drill/compact",
-            "/obj/item/screwdriver/omni_drill",
-            "/obj/item/weldingtool/electric/arc_welder",
+            "/obj/item/crowbar/large",
+            "/obj/item/pickaxe/drill",
+            "/obj/item/screwdriver",
+            "/obj/item/weldingtool",
             "/obj/item/storage/belt/utility",
             "/obj/item/clothing/head/utility/hardhat/orange",
             "/obj/item/stack/sheet/mineral/titanium/fifty",
@@ -154,13 +151,9 @@ public class MAP_STYLE_INIT {
             "/obj/item/stack/rods/fifty",
     };
     static String[] engineering_MixedCorps_object_pool = new String[]{
-            "/obj/machinery/rnd/production/colony_lathe,",
-            "/obj/machinery/ore_silo/colony_lathe,",
-            "/obj/machinery/rnd/production/colony_lathe,",
-            "/obj/machinery/power/smes/battery_pack,",
-            "/obj/machinery/power/smes/battery_pack/large,",
-            "/obj/machinery/power/stirling_generator,",
-            "/obj/machinery/power/port_gen/pacman/solid_fuel,",
+            "/obj/machinery/ore_silo,",
+            "/obj/machinery/power/smes,",
+            "/obj/machinery/power/port_gen/pacman,",
             "/obj/structure/closet/crate/solarpanel_small,",
             "/obj/structure/closet/crate/secure/plasma,",
             "/obj/machinery/portable_atmospherics/canister/oxygen,",
@@ -209,12 +202,6 @@ public class MAP_STYLE_INIT {
             "/obj/item/gun/ballistic/revolver/nagant",
             "/obj/item/gun/ballistic/rifle/boltaction",
 
-            "/obj/item/gun/ballistic/automatic/pistol/plasma_thrower",
-            "/obj/item/gun/ballistic/automatic/pistol/plasma_marksman",
-            "/obj/item/gun/ballistic/automatic/wylom",
-            "/obj/item/gun/ballistic/revolver/shotgun_revolver",
-            "/obj/item/gun/ballistic/automatic/miecz",
-            "/obj/item/gun/ballistic/automatic/lanca",
             "/obj/item/storage/backpack/duffelbag/syndie/c4",
             //
             "/obj/item/clothing/head/helmet",
@@ -288,7 +275,6 @@ public class MAP_STYLE_INIT {
             "/obj/item/gun/energy/e_gun",
             "/obj/item/melee/baton/telescopic",
             //
-            "/obj/item/gun/ballistic/automatic/xhihao_smg",
             "/obj/item/gun/ballistic/rifle/boltaction/prime",
     };
 
@@ -364,7 +350,7 @@ public class MAP_STYLE_INIT {
                     new String[]{"/obj/structure/table,","/obj/structure/table/reinforced,"});
             Area security_MixedCorps = new Area(
                     "/area/station/security",
-                    "/obj/machinery/door/airlock/security/old,/obj/effect/mapping_helpers/airlock/autoname,",
+                    "/obj/machinery/door/airlock/security,/obj/effect/mapping_helpers/airlock/autoname,",
                     shuttle_window_spawner,
                     titanium_wall_path,
                     security_MixedCorps_floor_pool,
@@ -460,7 +446,7 @@ public class MAP_STYLE_INIT {
                     new String[]{"/obj/structure/table,","/obj/structure/table/reinforced,"});
             Area security_NT = new Area(
                     "/area/station/security",
-                    "/obj/machinery/door/airlock/security/old,/obj/effect/mapping_helpers/airlock/autoname,",
+                    "/obj/machinery/door/airlock/security,/obj/effect/mapping_helpers/airlock/autoname,",
                     "/obj/effect/spawner/structure/window/reinforced,/turf/open/floor/plating,",
                     r_wall_path,
                     new String[]{"/turf/open/floor/iron/dark,"},
@@ -501,7 +487,7 @@ public class MAP_STYLE_INIT {
                     new String[]{"/obj/structure/table,","/obj/structure/table/reinforced,"});
             Area security_SYNDICATE = new Area(
                     "/area/station/security",
-                    "/obj/machinery/door/airlock/security/old,/obj/effect/mapping_helpers/airlock/autoname,",
+                    "/obj/machinery/door/airlock/security,/obj/effect/mapping_helpers/airlock/autoname,",
                     plastitanium_window_spawner,
                     plastitanium_wall_path,
                     basic_Syndicate_floor_pool,
@@ -541,7 +527,7 @@ public class MAP_STYLE_INIT {
                     new String[]{"/obj/structure/table,","/obj/structure/table/reinforced,"});
             Area security_SpaceRuin = new Area(
                     "/area/station/medical",
-                    "/obj/machinery/door/airlock/security/old,/obj/effect/mapping_helpers/airlock/autoname,",
+                    "/obj/machinery/door/airlock/securit,/obj/effect/mapping_helpers/airlock/autoname,",
                     lattice_insead_of_window,
                     r_wall_path,
                     new String[]{"/turf/open/floor/plating,"},
